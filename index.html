@@ -131,6 +131,46 @@
       outline-offset: 3px;
     }
 
+    .form-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: min(92vw, 320px);
+      padding: 13px 16px;
+      border: 1px solid rgba(27, 54, 95, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 12px 32px rgba(27, 54, 95, 0.16);
+      color: #1B365F;
+      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .form-toast.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    .form-toast__icon {
+      display: inline-flex;
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(27, 54, 95, 0.08);
+      color: #1B365F;
+    }
+
     /* ── Thin gold rule decorative element ───────────────────── */
     .gold-rule {
       display: inline-block;
@@ -2462,6 +2502,81 @@ window.nosLeftSlide = function (index) {
   document.addEventListener('DOMContentLoaded', function () {
     var rows = document.getElementById('hero-client-rows');
     if (rows) rows.appendChild(makeRow());
+  });
+})();
+</script>
+
+<!-- Netlify Forms: envio sin redireccion y confirmacion visual -->
+<script>
+(function () {
+  var toastTimer;
+
+  function ensureToast() {
+    var existing = document.getElementById('form-success-toast');
+    if (existing) return existing;
+
+    var toast = document.createElement('div');
+    toast.id = 'form-success-toast';
+    toast.className = 'form-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.innerHTML = '<span class="form-toast__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.2l2.7 2.7 6.3-6.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Mensaje enviado correctamente</span>';
+    document.body.appendChild(toast);
+    return toast;
+  }
+
+  function showSuccessToast() {
+    var toast = ensureToast();
+    window.clearTimeout(toastTimer);
+    toast.classList.add('is-visible');
+    toastTimer = window.setTimeout(function () {
+      toast.classList.remove('is-visible');
+    }, 3600);
+  }
+
+  function encodeForm(form) {
+    var data = new FormData(form);
+    return new URLSearchParams(data).toString();
+  }
+
+  function setSubmitting(form, isSubmitting) {
+    var button = form.querySelector('button[type="submit"]');
+    if (!button) return;
+    if (!button.dataset.originalText) button.dataset.originalText = button.textContent.trim();
+    button.disabled = isSubmitting;
+    button.style.opacity = isSubmitting ? '0.72' : '';
+    button.style.cursor = isSubmitting ? 'wait' : '';
+    button.textContent = isSubmitting ? 'Enviando...' : button.dataset.originalText;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('form[data-netlify="true"]').forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        setSubmitting(form, true);
+
+        fetch(form.getAttribute('action') || '/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeForm(form)
+        })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Form submission failed');
+            form.reset();
+            var counter = document.getElementById('char-count');
+            if (counter) counter.textContent = '0';
+            showSuccessToast();
+          })
+          .catch(function () {
+            form.submit();
+          })
+          .finally(function () {
+            setSubmitting(form, false);
+          });
+      });
+    });
   });
 })();
 </script>
