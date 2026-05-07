@@ -1,0 +1,157 @@
+<!--
+COMPONENT: Services — Dual-audience grid (dark background)
+REFERENCE:  reference-images/ref-features-grid-dark.png (adapted from 4-card to 2+1)
+PATTERN:    Near-black background. Two audience blocks stacked vertically,
+            each with a small eyebrow label ("Para empresas" / "Para
+            inversionistas"), followed by their service cards. The business
+            block has 2 cards side by side (Factoring + Confirming), the
+            investor block has 1 card (centered or left-aligned).
+USE ON:     Services overview section, usually right after the hero.
+LOGO:       No logo in this section.
+
+SERVICES (real, non-negotiable):
+  FOR BUSINESSES:
+    1. Factoring electrónico
+    2. Confirming a proveedores
+  FOR INVESTORS:
+    3. Opciones de inversión de corto plazo
+
+NOTE:       Replace placeholder images with real product/context photos.
+            Copy is placeholder — the user will provide final text for
+            the investor card. Keep the audience labels in `--tc-red`
+            for businesses and `--tc-gold` for investors to create
+            visual separation between the two groups.
+-->
+
+<section class="bg-[#121826] py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+    <!-- Section heading -->
+    <h2 class="text-center font-display font-bold text-white text-[28px] sm:text-[36px] lg:text-[42px] tracking-[-0.02em] leading-[1.1] mb-6">
+      Nuestros servicios
+    </h2>
+    <p class="mx-auto max-w-2xl text-center font-body text-[16px] lg:text-[17px] leading-[1.65] text-white/60 mb-16 lg:mb-20">
+      Soluciones financieras diseñadas para dos perfiles:
+      empresas que necesitan capital de trabajo y personas que
+      buscan rentabilizar su dinero en el corto plazo.
+    </p>
+
+    <!-- ======= PARA EMPRESAS ======= -->
+    <div class="mb-16 lg:mb-20">
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-8">
+        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-tc-red/[0.12]">
+          <svg class="h-4 w-4 text-tc-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <span class="font-accent text-[12px] uppercase tracking-[0.22em] text-tc-red">Para empresas</span>
+      </div>
+
+      <!-- 2-card grid -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+
+        <!-- Card: Factoring -->
+        <a href="/servicios/empresas#factoring"
+           class="group flex flex-col rounded-2xl bg-white/[0.04] ring-1 ring-white/[0.06] overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:ring-white/[0.12] hover:bg-white/[0.06]">
+          <div class="aspect-[16/10] w-full overflow-hidden bg-tc-navy/40">
+            <img
+              src="https://placehold.co/800x500/1B365F/FFFFFF?text=Factoring+electr%C3%B3nico"
+              alt="Factoring electrónico"
+              class="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              loading="lazy"
+            />
+          </div>
+          <div class="flex flex-1 flex-col gap-4 p-7 lg:p-8">
+            <h3 class="font-display font-bold text-white text-[22px] lg:text-[24px] tracking-[-0.015em] leading-tight">
+              Factoring electrónico
+            </h3>
+            <p class="font-body text-[15px] leading-[1.65] text-white/65">
+              Convierte tus facturas negociables en capital inmediato.
+              Proceso 100% digital, desembolso en menos de 48 horas,
+              tasas competitivas y sin costos ocultos. Ideal para
+              empresas que necesitan liquidez sin esperar el cobro.
+            </p>
+            <span class="mt-auto inline-flex items-center gap-1.5 font-display text-[13px] font-bold text-tc-red group-hover:gap-2.5 transition-all duration-200">
+              Conocer más
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card: Confirming -->
+        <a href="/servicios/empresas#confirming"
+           class="group flex flex-col rounded-2xl bg-white/[0.04] ring-1 ring-white/[0.06] overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:ring-white/[0.12] hover:bg-white/[0.06]">
+          <div class="aspect-[16/10] w-full overflow-hidden bg-tc-navy/40">
+            <img
+              src="https://placehold.co/800x500/1B365F/FFFFFF?text=Confirming"
+              alt="Confirming a proveedores"
+              class="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              loading="lazy"
+            />
+          </div>
+          <div class="flex flex-1 flex-col gap-4 p-7 lg:p-8">
+            <h3 class="font-display font-bold text-white text-[22px] lg:text-[24px] tracking-[-0.015em] leading-tight">
+              Confirming a proveedores
+            </h3>
+            <p class="font-body text-[15px] leading-[1.65] text-white/65">
+              Paga a tus proveedores de forma anticipada mientras
+              extiendes tu plazo de pago. Fortalece tu cadena de
+              suministro sin afectar tu flujo de caja y mejora tus
+              relaciones comerciales.
+            </p>
+            <span class="mt-auto inline-flex items-center gap-1.5 font-display text-[13px] font-bold text-tc-red group-hover:gap-2.5 transition-all duration-200">
+              Conocer más
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ======= PARA INVERSIONISTAS ======= -->
+    <div>
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-8">
+        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-tc-gold/[0.12]">
+          <svg class="h-4 w-4 text-tc-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        </div>
+        <span class="font-accent text-[12px] uppercase tracking-[0.22em] text-tc-gold">Para inversionistas</span>
+      </div>
+
+      <!-- Single card (max-width to not stretch across full width) -->
+      <div class="max-w-2xl">
+        <a href="/servicios/inversionistas"
+           class="group flex flex-col rounded-2xl bg-white/[0.04] ring-1 ring-white/[0.06] overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:ring-white/[0.12] hover:bg-white/[0.06] sm:flex-row">
+          <!-- Image (side layout on desktop) -->
+          <div class="aspect-[16/10] sm:aspect-auto sm:w-2/5 overflow-hidden bg-tc-navy/40 shrink-0">
+            <img
+              src="https://placehold.co/480x400/1B365F/FFFFFF?text=Inversi%C3%B3n"
+              alt="Opciones de inversión de corto plazo"
+              class="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              loading="lazy"
+            />
+          </div>
+          <div class="flex flex-1 flex-col gap-4 p-7 lg:p-8">
+            <h3 class="font-display font-bold text-white text-[22px] lg:text-[24px] tracking-[-0.015em] leading-tight">
+              Opciones de inversión<br class="hidden sm:inline"/>
+              de corto plazo
+            </h3>
+            <p class="font-body text-[15px] leading-[1.65] text-white/65">
+              <!-- Placeholder: the user will provide final copy and images -->
+              Rentabiliza tu capital con instrumentos de corto plazo
+              respaldados por operaciones reales de factoring.
+              Plazos flexibles, rendimientos atractivos y total
+              transparencia en cada operación.
+            </p>
+            <span class="mt-auto inline-flex items-center gap-1.5 font-display text-[13px] font-bold text-tc-gold group-hover:gap-2.5 transition-all duration-200">
+              Conocer más
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>

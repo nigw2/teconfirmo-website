@@ -1,0 +1,13 @@
+1. Menú de Navegación
+La estructura de navegación del sitio incluye las siguientes pestañas:
+Inicio
+Nosotros
+Servicios
+Blog
+Contacto
+2. Sección de Inicio (Encabezado)
+Eslogan principal: "Teconfirmo: tu idea, nuestro impulso"
+Llamado a la acción: "¡Contáctanos!"
+3. Sección de Bienvenida / Nosotros
+Título: "Bienvenido a Teconfirmo Capital"
+Descripción corporativa: "Somos una empresa gestora de factoring especializada en brindar soluciones de financiamiento no bancario a empresas. Facilitamos liquidez inmediata a proveedores que necesitan capital de trabajo y ayudamos a empresas a optimizar su estructura de capital, gestionar sus riesgos financieros y ejecutar estrategias de fusiones, adquisiciones y crecimiento corporativo. Al mismo tiempo, ofrecemos a inversionistas una alternativa sólida y rentable con retornos de corto plazo respaldados por activos reales"

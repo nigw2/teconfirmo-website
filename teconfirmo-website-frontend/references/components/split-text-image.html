@@ -1,0 +1,62 @@
+<!--
+COMPONENT: Split — Text (left) + Image (right)
+REFERENCE:  reference-images/ref-split-text-image.png
+PATTERN:    Dark background, two-column split. Left column: large display
+            heading (non-caps) + 2 body paragraphs. Right column: rounded
+            image (4:5 aspect) with subtle shadow. Breathing vertical padding.
+USE ON:     "¿Por qué Teconfirmo?" / value proposition section.
+            Pair with `split-image-text.html` below for visual rhythm
+            (alternating sides).
+LOGO:       No logo in this section.
+NOTE:       The heading question-form ("¿Por qué...?") is intentional —
+            it mirrors the reference's conversational tone. Keep the two
+            paragraphs distinct in theme: one about the product, one about
+            the brand / trust.
+-->
+
+<section class="bg-[var(--color-bg-near-black)] py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+
+      <!-- Left column: text -->
+      <div class="lg:pr-8">
+        <span class="font-accent text-[12px] uppercase tracking-tc-caps text-tc-red mb-5 inline-block">
+          Nuestra propuesta
+        </span>
+
+        <h2 class="font-display font-bold text-white text-[34px] sm:text-[44px] lg:text-[52px] tracking-tc-display leading-[1.1] mb-8">
+          ¿Por qué Teconfirmo?
+        </h2>
+
+        <div class="space-y-5 font-body text-[16px] lg:text-[17px] leading-relaxed text-white/80">
+          <p>
+            Porque financiar tu operación no debería detenerla. Con Teconfirmo,
+            conviertes facturas en liquidez inmediata a través de nuestro servicio
+            de Factoring, o pagas a tus proveedores de forma anticipada con
+            Confirming — todo en una plataforma digital, ágil y transparente.
+          </p>
+          <p>
+            Y si lo tuyo es hacer crecer tu capital, ofrecemos opciones de
+            inversión de corto plazo respaldadas por operaciones reales de
+            factoring: plazos flexibles, rendimientos atractivos y total
+            visibilidad de cada operación. Más de una década financiando
+            empresas peruanas e inversionistas que confían en nosotros.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right column: image -->
+      <div class="relative">
+        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-tc-navy shadow-tc-xl">
+          <img
+            src="https://placehold.co/800x1000/1B365F/FFFFFF?text=Imagen+contextual"
+            alt="Equipo Teconfirmo trabajando"
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

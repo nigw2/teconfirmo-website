@@ -1,0 +1,73 @@
+<!--
+COMPONENT: Split — Image (left) + Text (right)
+REFERENCE:  reference-images/ref-split-image-text.png
+PATTERN:    Dark background, two-column split REVERSED (image left, text right).
+            Use immediately after `split-text-image.html` for alternating
+            visual rhythm. Works well for "About us" / company story sections.
+USE ON:     "Sobre nosotros" / about, company milestones, trust signals.
+LOGO:       No logo in this section.
+NOTE:       Keep paragraphs shorter than in `split-text-image.html` — this
+            is the confirming beat, not the opening argument.
+-->
+
+<section class="bg-[var(--color-bg-near-black)] py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+
+      <!-- Left column: image (visible first on desktop, above text on mobile) -->
+      <div class="relative order-first">
+        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-tc-navy shadow-tc-xl">
+          <img
+            src="https://placehold.co/800x1000/1B365F/FFFFFF?text=Nuestro+equipo"
+            alt="Oficinas Teconfirmo Capital"
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Right column: text -->
+      <div class="lg:pl-8">
+        <span class="font-accent text-[12px] uppercase tracking-tc-caps text-tc-red mb-5 inline-block">
+          Quiénes somos
+        </span>
+
+        <h2 class="font-display font-bold text-white text-[34px] sm:text-[44px] lg:text-[52px] tracking-tc-display leading-[1.1] mb-8">
+          Sobre Teconfirmo
+        </h2>
+
+        <div class="space-y-5 font-body text-[16px] lg:text-[17px] leading-relaxed text-white/80">
+          <p>
+            Somos una fintech peruana especializada en soluciones de capital
+            de trabajo para empresas y opciones de inversión de corto plazo
+            para inversionistas. Conectamos ambos mundos: las empresas obtienen
+            liquidez inmediata y los inversionistas rentabilizan su capital.
+          </p>
+          <p>
+            Combinamos tecnología propia, un equipo con experiencia en banca
+            corporativa y un enfoque obsesivo por la agilidad. Nuestro
+            compromiso es simple: procesos transparentes y respuestas en
+            horas, no semanas.
+          </p>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4">
+          <div>
+            <div class="font-display font-bold text-white text-[28px] lg:text-[32px] tracking-tc-heading">+S/ 500M</div>
+            <div class="font-accent text-[12px] uppercase tracking-tc-caps text-white/60 mt-1">Financiados</div>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-[28px] lg:text-[32px] tracking-tc-heading">+500</div>
+            <div class="font-accent text-[12px] uppercase tracking-tc-caps text-white/60 mt-1">Empresas</div>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-[28px] lg:text-[32px] tracking-tc-heading">48h</div>
+            <div class="font-accent text-[12px] uppercase tracking-tc-caps text-white/60 mt-1">Desembolso</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

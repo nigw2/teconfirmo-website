@@ -1,0 +1,246 @@
+<!--
+COMPONENT: Navbar — Dark (navy background) with Servicios mega-dropdown
+REFERENCE:  reference-images/ref-navbar-dark.png
+PATTERN:    Navy solid background, white uppercase links with wide letter-spacing.
+            "Servicios" link triggers a dropdown on hover showing two cards:
+            "Para empresas" (Factoring + Confirming) and "Para inversionistas"
+            (Opciones de inversión de corto plazo).
+USE ON:     Top of every page. When overlaid on a hero image, use as
+            `position: absolute` with transparent bg (hero component
+            already handles this). When standalone, wrap in `bg-tc-navy`.
+LOGO:       Uses `logo-color-fondo-azul.png` (color on navy bg).
+            When on hero photo, swap to `logo-negativo.png`.
+NOTE:       The dropdown requires a small JS snippet (included) for
+            hover intent delay (prevents accidental close on mouse travel).
+            For React/Vue, rewrite as controlled state instead.
+-->
+
+<!-- Navbar wrapper -->
+<nav class="relative z-50 w-full bg-tc-navy" data-navbar>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10 lg:py-6">
+
+    <!-- Logo -->
+    <a href="/" aria-label="Teconfirmo Capital — Inicio" class="block shrink-0">
+      <img
+        src="/brand-assets/logos/logo-color-fondo-azul.png"
+        alt="Teconfirmo Capital"
+        width="160" height="40"
+        class="h-9 w-auto lg:h-10"
+      />
+    </a>
+
+    <!-- Nav links (desktop) -->
+    <ul class="hidden items-center gap-10 lg:flex">
+      <li>
+        <a href="/"
+           class="font-accent text-[13px] uppercase tracking-[0.22em] text-white/70 transition-colors duration-200 hover:text-white"
+        >Inicio</a>
+      </li>
+      <li>
+        <a href="/nosotros"
+           class="font-accent text-[13px] uppercase tracking-[0.22em] text-white/70 transition-colors duration-200 hover:text-white"
+        >Nosotros</a>
+      </li>
+
+      <!-- ======= SERVICIOS with dropdown ======= -->
+      <li class="relative" data-dropdown-trigger>
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="group inline-flex items-center gap-1.5 font-accent text-[13px] uppercase tracking-[0.22em] text-white/70 transition-colors duration-200 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
+        >
+          Servicios
+          <svg class="h-3.5 w-3.5 transition-transform duration-200 group-aria-[expanded=true]:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 6l4 4 4-4"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown panel -->
+        <div
+          class="pointer-events-none invisible absolute left-1/2 top-full z-50 w-[540px] -translate-x-1/2 translate-y-2 rounded-2xl bg-white p-2 opacity-0 shadow-[0_4px_6px_rgba(27,54,95,0.08),0_20px_48px_rgba(27,54,95,0.16)] ring-1 ring-tc-navy/5 transition-all duration-250 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          data-dropdown-panel
+          role="menu"
+        >
+          <div class="grid grid-cols-2 gap-2">
+
+            <!-- Card: Para empresas -->
+            <a href="/servicios/empresas"
+               role="menuitem"
+               class="group flex flex-col rounded-xl p-5 transition-colors duration-200 hover:bg-tc-navy/[0.04]"
+            >
+              <!-- Icon -->
+              <div class="mb-3.5 flex h-10 w-10 items-center justify-center rounded-lg bg-tc-navy/[0.06]">
+                <svg class="h-5 w-5 text-tc-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2"/>
+                  <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                  <line x1="12" y1="12" x2="12" y2="12.01"/>
+                </svg>
+              </div>
+              <!-- Text -->
+              <span class="font-display text-[15px] font-bold text-tc-navy leading-tight">Para empresas</span>
+              <span class="mt-1.5 font-body text-[13px] leading-snug text-tc-navy/60">
+                Factoring electrónico y Confirming a proveedores.
+                Liquidez inmediata para tu operación.
+              </span>
+              <!-- Service tags -->
+              <div class="mt-3.5 flex flex-wrap gap-1.5">
+                <span class="rounded-full bg-tc-red/[0.08] px-2.5 py-0.5 font-accent text-[10px] uppercase tracking-[0.08em] text-tc-red">Factoring</span>
+                <span class="rounded-full bg-tc-red/[0.08] px-2.5 py-0.5 font-accent text-[10px] uppercase tracking-[0.08em] text-tc-red">Confirming</span>
+              </div>
+            </a>
+
+            <!-- Card: Para inversionistas -->
+            <a href="/servicios/inversionistas"
+               role="menuitem"
+               class="group flex flex-col rounded-xl p-5 transition-colors duration-200 hover:bg-tc-navy/[0.04]"
+            >
+              <!-- Icon -->
+              <div class="mb-3.5 flex h-10 w-10 items-center justify-center rounded-lg bg-tc-gold/[0.10]">
+                <svg class="h-5 w-5 text-tc-gold-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 17l6-6 4 4 8-8"/>
+                  <path d="M14 7h7v7"/>
+                </svg>
+              </div>
+              <!-- Text -->
+              <span class="font-display text-[15px] font-bold text-tc-navy leading-tight">Para inversionistas</span>
+              <span class="mt-1.5 font-body text-[13px] leading-snug text-tc-navy/60">
+                Opciones de inversión de corto plazo con
+                rentabilidad atractiva y respaldo real.
+              </span>
+              <!-- Service tags -->
+              <div class="mt-3.5 flex flex-wrap gap-1.5">
+                <span class="rounded-full bg-tc-gold/[0.12] px-2.5 py-0.5 font-accent text-[10px] uppercase tracking-[0.08em] text-tc-gold-deep">Inversión corto plazo</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </li>
+      <!-- ======= END SERVICIOS ======= -->
+
+      <li>
+        <a href="/blog"
+           class="font-accent text-[13px] uppercase tracking-[0.22em] text-white/70 transition-colors duration-200 hover:text-white"
+        >Blog</a>
+      </li>
+      <li>
+        <a href="/contacto"
+           class="font-accent text-[13px] uppercase tracking-[0.22em] text-white/70 transition-colors duration-200 hover:text-white"
+        >Contacto</a>
+      </li>
+    </ul>
+
+    <!-- CTA (desktop) -->
+    <a href="/solicitar"
+       class="hidden font-display text-[14px] font-bold tracking-[0.03em] text-white bg-tc-red rounded-full px-6 py-3 shadow-[0_1px_2px_rgba(27,54,95,0.06),0_4px_12px_rgba(27,54,95,0.08)] transition-colors duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-tc-red-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 lg:inline-flex lg:items-center"
+    >Solicitar financiamiento</a>
+
+    <!-- Mobile trigger -->
+    <button
+      type="button"
+      aria-label="Abrir menú"
+      data-mobile-trigger
+      class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="7"  x2="20" y2="7"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="17" x2="20" y2="17"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ======= MOBILE MENU (hidden by default) ======= -->
+  <div class="hidden lg:hidden" data-mobile-menu>
+    <div class="border-t border-white/10 px-6 pb-6 pt-4 space-y-1">
+      <a href="/"         class="block rounded-lg px-3 py-2.5 font-accent text-[13px] uppercase tracking-[0.18em] text-white/80 hover:bg-white/5 hover:text-white">Inicio</a>
+      <a href="/nosotros" class="block rounded-lg px-3 py-2.5 font-accent text-[13px] uppercase tracking-[0.18em] text-white/80 hover:bg-white/5 hover:text-white">Nosotros</a>
+
+      <!-- Servicios accordion (mobile) -->
+      <div>
+        <button type="button" data-mobile-accordion class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-accent text-[13px] uppercase tracking-[0.18em] text-white/80 hover:bg-white/5 hover:text-white">
+          Servicios
+          <svg class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="hidden pl-4 pt-1 space-y-1" data-mobile-accordion-panel>
+          <a href="/servicios/empresas"       class="block rounded-lg px-3 py-2 font-body text-[14px] text-white/70 hover:bg-white/5 hover:text-white">
+            <span class="font-bold text-white">Para empresas</span>
+            <span class="block text-[12px] text-white/50 mt-0.5">Factoring · Confirming</span>
+          </a>
+          <a href="/servicios/inversionistas" class="block rounded-lg px-3 py-2 font-body text-[14px] text-white/70 hover:bg-white/5 hover:text-white">
+            <span class="font-bold text-white">Para inversionistas</span>
+            <span class="block text-[12px] text-white/50 mt-0.5">Inversión de corto plazo</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="/blog"     class="block rounded-lg px-3 py-2.5 font-accent text-[13px] uppercase tracking-[0.18em] text-white/80 hover:bg-white/5 hover:text-white">Blog</a>
+      <a href="/contacto" class="block rounded-lg px-3 py-2.5 font-accent text-[13px] uppercase tracking-[0.18em] text-white/80 hover:bg-white/5 hover:text-white">Contacto</a>
+
+      <div class="pt-3">
+        <a href="/solicitar" class="block w-full rounded-full bg-tc-red py-3 text-center font-display text-[14px] font-bold text-white hover:bg-tc-red-deep transition-colors duration-200">Solicitar financiamiento</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= DROPDOWN + MOBILE MENU BEHAVIOR ======= -->
+<script>
+(function() {
+  // --- Desktop dropdown (hover intent with 120ms delay) ---
+  const trigger = document.querySelector('[data-dropdown-trigger]');
+  const panel   = document.querySelector('[data-dropdown-panel]');
+  const btn     = trigger?.querySelector('button');
+  let timeout;
+
+  function showDropdown() {
+    clearTimeout(timeout);
+    panel.classList.remove('pointer-events-none','invisible','opacity-0','translate-y-2');
+    panel.classList.add('pointer-events-auto','visible','opacity-100','translate-y-0');
+    btn.setAttribute('aria-expanded','true');
+  }
+  function hideDropdown() {
+    timeout = setTimeout(function() {
+      panel.classList.add('pointer-events-none','invisible','opacity-0','translate-y-2');
+      panel.classList.remove('pointer-events-auto','visible','opacity-100','translate-y-0');
+      btn.setAttribute('aria-expanded','false');
+    }, 120);
+  }
+
+  if (trigger && panel) {
+    trigger.addEventListener('mouseenter', showDropdown);
+    trigger.addEventListener('mouseleave', hideDropdown);
+    panel.addEventListener('mouseenter', showDropdown);
+    panel.addEventListener('mouseleave', hideDropdown);
+    // Keyboard: toggle on click/Enter
+    btn.addEventListener('click', function() {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      expanded ? hideDropdown() : showDropdown();
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') hideDropdown();
+    });
+  }
+
+  // --- Mobile menu toggle ---
+  const mobileTrigger = document.querySelector('[data-mobile-trigger]');
+  const mobileMenu    = document.querySelector('[data-mobile-menu]');
+  if (mobileTrigger && mobileMenu) {
+    mobileTrigger.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // --- Mobile accordion ---
+  document.querySelectorAll('[data-mobile-accordion]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var panel = btn.nextElementSibling;
+      var arrow = btn.querySelector('svg');
+      panel.classList.toggle('hidden');
+      arrow.style.transform = panel.classList.contains('hidden') ? '' : 'rotate(180deg)';
+    });
+  });
+})();
+</script>

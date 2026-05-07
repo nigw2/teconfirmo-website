@@ -1,0 +1,245 @@
+/* ============================================================
+   Teconfirmo Capital — Brand Design Tokens
+   Source of truth: brand guidelines + official fonts shipped in this skill.
+
+   HOW TO USE:
+   1. Copy `assets/fonts/` from this skill into the project at `/public/fonts/`
+      (or wherever your static assets go — adjust the paths below if needed).
+   2. Copy this file into the project's CSS and import it BEFORE any other CSS.
+      e.g. in Next.js: `import '@/styles/brand-tokens.css'` in _app or layout.
+   3. Use the CSS variables everywhere — never hardcode a brand color.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   @font-face — Acumin Pro (display + body)
+   Paths assume fonts live at /fonts/ in the project's public folder.
+   If your fonts are elsewhere, do a find-and-replace on these URLs.
+   ------------------------------------------------------------ */
+
+@font-face {
+  font-family: 'Acumin Pro';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/AcuminPro-Regular.woff2') format('woff2'),
+       url('/fonts/AcuminPro-Regular.otf')   format('opentype');
+}
+
+@font-face {
+  font-family: 'Acumin Pro';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('/fonts/AcuminPro-Italic.woff2') format('woff2'),
+       url('/fonts/AcuminPro-Italic.otf')   format('opentype');
+}
+
+@font-face {
+  font-family: 'Acumin Pro';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/AcuminPro-Bold.woff2') format('woff2'),
+       url('/fonts/AcuminPro-Bold.otf')   format('opentype');
+}
+
+@font-face {
+  font-family: 'Acumin Pro';
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url('/fonts/AcuminPro-BoldItalic.woff2') format('woff2'),
+       url('/fonts/AcuminPro-BoldItalic.otf')   format('opentype');
+}
+
+/* ------------------------------------------------------------
+   @font-face — Halyard Text (accent / labels / body alternative)
+   NOTE: The brand guidelines reference "Halyard Display" for the
+   "CAPITAL" descriptor, but the provided font files are "Halyard Text".
+   They come from the same superfamily and share visual DNA. For web
+   body-size use, Halyard Text is actually the correct choice
+   (Halyard Display is optimized for large sizes 30px+).
+   For the logo itself, we never re-typeset — we use the PNG asset.
+   ------------------------------------------------------------ */
+
+@font-face {
+  font-family: 'Halyard Text';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/HalyardText-Light.woff2') format('woff2'),
+       url('/fonts/HalyardText-Light.otf')   format('opentype');
+}
+
+@font-face {
+  font-family: 'Halyard Text';
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  src: url('/fonts/HalyardText-LightItalic.woff2') format('woff2'),
+       url('/fonts/HalyardText-LightItalic.otf')   format('opentype');
+}
+
+@font-face {
+  font-family: 'Halyard Text';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/HalyardText-Regular.woff2') format('woff2'),
+       url('/fonts/HalyardText-Regular.otf')   format('opentype');
+}
+
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+
+:root {
+  /* --- Primary brand colors --- */
+  --tc-navy:       #1B365F; /* PANTONE 534 C — primary brand color */
+  --tc-navy-deep:  #212B46; /* PANTONE 533 C — darker navy, elevated surfaces */
+  --tc-red:        #EF3346; /* PANTONE Red 32 C — primary accent / CTAs */
+  --tc-red-deep:   #A4343E; /* PANTONE 1807 C — hover/active state for red */
+
+  /* --- Secondary brand colors --- */
+  --tc-gold:       #EAAB00; /* PANTONE 124 C — premium accent, badges */
+  --tc-gold-deep:  #AF6E05; /* PANTONE 139 C — hover state for gold */
+
+  /* --- Neutrals --- */
+  --tc-black:      #000000;
+  --tc-gray-500:   #808080;
+  --tc-gray-200:   #CFCFCF;
+  --tc-white:      #FFFFFF;
+
+  /* --- Semantic mappings (use these in components) --- */
+  --color-bg:                  var(--tc-white);
+  --color-bg-elevated:         var(--tc-white);
+  --color-bg-dark:             var(--tc-navy);
+  --color-bg-dark-elevated:    var(--tc-navy-deep);
+  --color-bg-near-black:       #121826;   /* for very-dark fintech look (Revolut-style) */
+
+  --color-text:                var(--tc-navy);
+  --color-text-muted:          var(--tc-gray-500);
+  --color-text-on-dark:        var(--tc-white);
+  --color-text-on-dark-muted:  rgba(255, 255, 255, 0.72);
+
+  --color-border:              var(--tc-gray-200);
+  --color-border-strong:       var(--tc-navy);
+  --color-border-on-dark:      rgba(255, 255, 255, 0.12);
+
+  --color-accent:              var(--tc-red);
+  --color-accent-hover:        var(--tc-red-deep);
+  --color-accent-secondary:    var(--tc-gold);
+
+  /* --- Typography --- */
+  --font-display: 'Acumin Pro', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Acumin Pro', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-accent:  'Halyard Text', 'Manrope', 'Source Sans Pro', system-ui, sans-serif;
+
+  /* --- Tracking (letter-spacing) --- */
+  --tracking-display:  -0.025em; /* large headings 40px+ */
+  --tracking-heading:  -0.015em; /* h2/h3 */
+  --tracking-body:      0;
+  --tracking-caps:      0.28em;  /* Halyard Text all-caps labels (nav, eyebrows) */
+  --tracking-button:    0.04em;  /* buttons, slight letter-spacing */
+
+  /* --- Line heights --- */
+  --leading-tight:   1.05;
+  --leading-snug:    1.2;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+
+  /* --- Spacing scale (4/8px base, 9 steps) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* --- Radii --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 9999px;
+
+  /* --- Brand shadows (navy-tinted, never neutral gray) --- */
+  --shadow-sm: 0 1px 2px rgba(27, 54, 95, 0.06);
+  --shadow-md: 0 1px 2px rgba(27, 54, 95, 0.06), 0 4px 12px rgba(27, 54, 95, 0.08);
+  --shadow-lg: 0 2px 4px rgba(27, 54, 95, 0.06), 0 12px 32px rgba(27, 54, 95, 0.12);
+  --shadow-xl: 0 4px 8px rgba(27, 54, 95, 0.08), 0 24px 48px rgba(27, 54, 95, 0.16);
+  --shadow-glow-red: 0 0 0 1px rgba(239, 51, 70, 0.2), 0 8px 32px rgba(239, 51, 70, 0.24);
+
+  /* --- Motion --- */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+}
+
+/* ============================================================
+   Base reset / defaults — apply at the project root
+   ============================================================ */
+
+html {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-snug);
+}
+
+h1 {
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+}
+
+p {
+  line-height: var(--leading-relaxed);
+}
+
+/* All-caps Halyard Text labels (eyebrow, nav, small caps) */
+.label-caps {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  font-size: 13px;
+}
+
+/* Wordmark composition reference (red "Te" + navy "confirmo") —
+   use this ONLY for unusual contexts where the PNG logo is not viable.
+   Default is always the PNG asset. */
+.tc-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.tc-wordmark__te   { color: var(--tc-red); }
+.tc-wordmark__rest { color: var(--tc-navy); }
+
+/* Utility: hide scrollbars while keeping scroll functional
+   (used by horizontal carousels — tools-carousel component) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
