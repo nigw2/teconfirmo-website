@@ -1143,29 +1143,31 @@
           <h3 style="font-family:'Acumin Pro',sans-serif;font-weight:700;font-size:26px;color:#1B365F ;text-align:center;margin:0 0 5px;">Déjanos tus datos</h3>
           <p style="font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;opacity:0.55;text-align:center;margin:0 0 19px;">Y nos comunicaremos contigo</p>
 
-          <form id="hero-form" onsubmit="return false;" autocomplete="off">
+          <form id="hero-form" name="cotizacion" method="POST" action="/" data-netlify="true" autocomplete="off">
+
+            <input type="hidden" name="form-name" value="cotizacion" />
 
             <!-- RUC empresa -->
-            <input type="text" id="hero-ruc" placeholder="RUC de tu empresa" maxlength="11" inputmode="numeric"
+            <input type="text" id="hero-ruc" name="ruc" placeholder="RUC de tu empresa" maxlength="11" inputmode="numeric"
               style="width:100%;border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;margin-bottom:11px;box-sizing:border-box;"
               onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
 
             <!-- Nombres | Apellidos -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
-              <input type="text" id="hero-nombres" placeholder="Nombres" inputmode="text"
+              <input type="text" id="hero-nombres" name="nombres" placeholder="Nombres" inputmode="text"
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
-              <input type="text" id="hero-apellidos" placeholder="Apellidos" inputmode="text"
+              <input type="text" id="hero-apellidos" name="apellidos" placeholder="Apellidos" inputmode="text"
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
             </div>
 
             <!-- Correo | Celular -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
-              <input type="email" id="hero-email" placeholder="Correo"
+              <input type="email" id="hero-email" name="email" placeholder="Correo"
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
-              <input type="tel" id="hero-celular" placeholder="Celular" maxlength="12" inputmode="numeric"
+              <input type="tel" id="hero-celular" name="celular" placeholder="Celular" maxlength="12" inputmode="numeric"
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
             </div>
@@ -1183,7 +1185,7 @@
 
             <!-- Autorización de datos -->
             <label style="display:flex;align-items:flex-start;gap:8px;font-family:'Acumin Pro',sans-serif;font-size:13px;color:#1B365F;opacity:0.65;line-height:1.5;margin-bottom:16px;cursor:pointer;">
-              <input type="checkbox" required style="margin-top:3px;flex-shrink:0;accent-color:#EF3346;" />
+              <input type="checkbox" name="autorizacion_datos" value="si" required style="margin-top:3px;flex-shrink:0;accent-color:#EF3346;" />
               <span>Autorizo el uso de mis datos de acuerdo a las condiciones detalladas en <a href="#" style="color:#1B365F;text-decoration:underline;">Autorización para tratamiento de datos personales</a></span>
             </label>
 
@@ -1856,7 +1858,9 @@
       </p>
     </div>
 
-    <form action="#" method="POST" class="space-y-5">
+    <form name="contacto" method="POST" action="/" data-netlify="true" class="space-y-5">
+
+      <input type="hidden" name="form-name" value="contacto" />
 
       <div>
         <label for="contact-name" class="sr-only">Nombre</label>
@@ -2427,6 +2431,7 @@ window.nosLeftSlide = function (index) {
     inp.type = 'text';
     inp.placeholder = 'RUC de tu cliente con facturas por cobrar a';
     inp.maxLength = 11;
+    inp.name = 'cliente[]';
     inp.style.cssText = inputStyle;
     inp.addEventListener('focus', function () { inp.style.borderColor = '#1B365F'; });
     inp.addEventListener('blur',  function () { inp.style.borderColor = '#CFCFCF'; });
