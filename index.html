@@ -93,16 +93,19 @@
 
     /* ── Global base ──────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     html {
       font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
       font-weight: 400;
       color: #1B365F;
       background: #ffffff;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
       scroll-behavior: smooth;
     }
+    body { overflow-x: hidden; }
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
       font-weight: 700;
@@ -169,6 +172,138 @@
       border-radius: 50%;
       background: rgba(27, 54, 95, 0.08);
       color: #1B365F;
+    }
+
+    .hero-form-type {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 4px;
+      border: 1px solid rgba(207, 207, 207, 0.9);
+      border-radius: 10px;
+      background: #F8FAFC;
+    }
+    .hero-form-type__option {
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: rgba(27, 54, 95, 0.58);
+      cursor: pointer;
+      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 11px 12px;
+      transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .hero-form-type__option.is-active {
+      border-color: rgba(27, 54, 95, 0.12);
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(27, 54, 95, 0.12);
+      color: #1B365F;
+    }
+
+    .payer-logo-marquee {
+      overflow: hidden;
+      position: relative;
+      left: 50%;
+      width: calc(100vw - 2px);
+      margin-left: calc(-50vw + 1px);
+      padding-left: 62px;
+      padding-right: 62px;
+    }
+    .payer-logo-track {
+      display: flex;
+      width: 100%;
+      min-height: 130px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .payer-logo-item {
+      display: flex;
+      width: 180px;
+      height: 130px;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+    }
+    .payer-logo-item img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 180px;
+      max-height: 86px;
+      object-fit: contain;
+    }
+    /* Compensación visual: estos logos vienen con mucho whitespace
+       interno en su archivo origen, así que se renderizan más grandes
+       para igualar el tamaño percibido de las letras (ref. CENCOSUD). */
+    .payer-logo-item img[src*="agrovisi"]    { max-height: 110px; max-width: 200px; }
+    .payer-logo-item img[src*="besco"]       { max-height: 118px; max-width: 220px; }
+    .payer-logo-item img[src*="los_portales"]{ max-height: 130px; max-width: 240px; }
+    .payer-logo-item img[src*="volcan"]      { max-height: 110px; max-width: 200px; }
+    /* Estos vienen tightly-cropped o con frame coloreado dominante,
+       se renderizan más chicos para igualar el tamaño percibido (ref. BACKUS). */
+    .payer-logo-item img[src*="gloria"]      { max-height: 68px;  max-width: 140px; }
+    .payer-logo-item img[src*="oxxo"]        { max-height: 56px;  max-width: 130px; }
+    .payer-logo-item img[src*="falabella"]   { max-height: 62px;  max-width: 145px; }
+    .payer-logo-item img[src*="ripley"]      { max-height: 100px;  max-width: 187px; }
+    .payer-logo-item img[src*="softys"]      { max-height: 100px;  max-width: 187px; }
+
+    .payer-logo-set {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 34px;
+      width: 100%;
+      flex: 0 0 100%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .payer-logo-set.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .payer-logo-set[aria-hidden="true"] {
+      display: flex;
+    }
+    .payer-logo-set[data-payer-panel="0"] .payer-logo-item:nth-child(n+7),
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(-n+6),
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(13) {
+      display: none;
+    }
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(7) { order: 1; }
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(10) { order: 2; }
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(11) { order: 3; }
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(12) { order: 4; }
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(8) { order: 5; }
+    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(9) { order: 6; }
+    .payer-logo-next {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      z-index: 2;
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(27, 54, 95, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #1B365F;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .payer-logo-next:hover {
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(27, 54, 95, 0.13);
     }
 
     /* ── Thin gold rule decorative element ───────────────────── */
@@ -245,71 +380,14 @@
       background: #1B365F;
       color: #fff;
     }
-    .hero-logo-lockup {
-      position: relative;
-      display: inline-block;
-      line-height: 1;
+    .hero-logo-image {
+      display: block;
+      width: clamp(400px, 60vw, 1100px);
+      height: auto;
       transform: translateY(4vh);
-    }
-    .hero-logo-row {
-      position: relative;
-      display: block;
-      font-size: clamp(60px, 11.6vw, 164px);
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .hero-logo-word {
-      display: inline-block;
-      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
-      font-size: 1.1em;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      white-space: nowrap;
-      clip-path: inset(0 100% -8% -2%);
+      clip-path: inset(0 100% -2% -2%);
       will-change: clip-path;
-      animation: heroLogoReveal 1.45s cubic-bezier(0.55, 0.05, 0.2, 1) 0.35s forwards;
-    }
-    .hero-logo-te {
-      color: #EF3346;
-    }
-    .hero-logo-confirmo {
-      color: #fff;
-      letter-spacing: -0.024em;
-    }
-    .hero-logo-mark {
-      position: absolute;
-      top: -0.27em;
-      right: -0.42em;
-      width: 0.50em;
-      height: 0.50em;
-      opacity: 0;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
-      animation: heroMarkAppear 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) 1.85s forwards;
-    }
-    .hero-logo-mark > span { position: absolute; display: block; }
-    .hero-logo-mark-base { inset: 0; background: #fff; }
-    .hero-logo-mark-gold { bottom: 0; left: 0; width: 67%; height: 67%; background: #EAAB00; }
-    .hero-logo-mark-red { bottom: 0; left: 0; width: 34%; height: 34%; background: #EF3346; }
-    .hero-logo-capital-row {
-      position: relative;
-      display: block;
-      text-align: right;
-      margin-top: -1.5em;
-      padding-right: 0.04em;
-    }
-    .hero-logo-capital {
-      display: inline-block;
-      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
-      font-size: clamp(20px, 3.45vw, 50px);
-      font-weight: 500;
-      letter-spacing: 0.55em;
-      color: #EF3346;
-      white-space: nowrap;
-      margin-right: -0.55em;
-      clip-path: inset(0 100% -10% -2%);
-      will-change: clip-path;
-      animation: heroCapitalReveal 0.75s cubic-bezier(0.55, 0.05, 0.2, 1) 2.10s forwards;
+      animation: heroLogoReveal 2.5s cubic-bezier(0.55, 0.05, 0.2, 1) 0.35s forwards;
     }
     .hero-carousel-next {
       position: absolute;
@@ -359,39 +437,20 @@
       transform: scale(1.12);
     }
     @keyframes heroLogoReveal {
-      from { clip-path: inset(0 100% -8% -2%); }
-      to   { clip-path: inset(0 -2% -8% -2%); }
-    }
-    @keyframes heroCapitalReveal {
-      from { clip-path: inset(0 100% -10% -2%); }
-      to   { clip-path: inset(0 -2% -10% -2%); }
-    }
-    @keyframes heroMarkAppear {
-      from { opacity: 0; transform: translateY(-3px) scale(0.94); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+      from { clip-path: inset(0 100% -2% -2%); }
+      to   { clip-path: inset(0 -2% -2% -2%); }
     }
     @media (max-width: 640px) {
-      .hero-logo-lockup {
+      .hero-logo-image {
         transform: translateY(0);
-      }
-      .hero-logo-row {
-        font-size: clamp(48px, 16.5vw, 92px);
-      }
-      .hero-logo-capital {
-        font-size: clamp(16px, 5.4vw, 28px);
-        letter-spacing: 0.40em;
-        margin-right: -0.40em;
+        width: clamp(260px, 88vw, 480px);
       }
     }
     @media (prefers-reduced-motion: reduce) {
-      .hero-logo-word,
-      .hero-logo-capital,
-      .hero-logo-mark {
+      .hero-logo-image {
         animation-duration: 0.001s !important;
         animation-delay: 0s !important;
-        clip-path: inset(0 -2% -10% -2%) !important;
-        opacity: 1 !important;
-        transform: none !important;
+        clip-path: inset(0 -2% -2% -2%) !important;
       }
     }
 
@@ -1103,21 +1162,7 @@
 
   <!-- Slide 1: logo intro -->
   <div class="hero-slide hero-logo-slide is-active" data-hero-slide="0" aria-label="Teconfirmo Capital">
-    <div class="hero-logo-lockup" aria-hidden="true">
-      <div class="hero-logo-row">
-        <span class="hero-logo-word">
-          <span class="hero-logo-te">Te</span><span style="display:inline-block; width:0.04em;"></span><span class="hero-logo-confirmo">confirmo</span>
-        </span>
-        <span class="hero-logo-mark">
-          <span class="hero-logo-mark-base"></span>
-          <span class="hero-logo-mark-gold"></span>
-          <span class="hero-logo-mark-red"></span>
-        </span>
-      </div>
-      <div class="hero-logo-capital-row">
-        <span class="hero-logo-capital">CAPITAL</span>
-      </div>
-    </div>
+    <img src="/brand-assets/logo-color-fondo-azul.png" alt="Teconfirmo Capital" class="hero-logo-image" decoding="async" />
   </div>
 
   <!-- Slide 2: portada actual -->
@@ -1160,10 +1205,11 @@
             <a href="#servicios"
                class="hero-cta-primary inline-flex items-center gap-2.5 font-display font-bold text-center text-white bg-tc-red rounded-full"
                style="padding:14px 28px;font-size:15px;letter-spacing:0.02em;text-decoration:none;">
-              Contáctanos
+              Soy empresa
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
             </a>
             <a href="#servicios"
+               onclick="document.querySelector('[data-svc-tab=inversionistas]').click();"
                class="hero-ghost-btn inline-flex items-center gap-2.5 font-display font-bold text-tc-navy rounded-full"
                style="padding:14px 28px;font-size:15px;letter-spacing:0.02em;text-decoration:none;">
               Soy inversionista
@@ -1186,11 +1232,19 @@
           <form id="hero-form" name="cotizacion" method="POST" action="/" data-netlify="true" autocomplete="off">
 
             <input type="hidden" name="form-name" value="cotizacion" />
+            <input type="hidden" id="hero-form-type-value" name="tipo_usuario" value="empresa" />
+
+            <div class="hero-form-type" aria-label="Tipo de formulario">
+              <button type="button" class="hero-form-type__option is-active" data-hero-form-type="empresa" aria-pressed="true">Empresa</button>
+              <button type="button" class="hero-form-type__option" data-hero-form-type="inversionista" aria-pressed="false">Inversionista</button>
+            </div>
 
             <!-- RUC empresa -->
-            <input type="text" id="hero-ruc" name="ruc" placeholder="RUC de tu empresa" maxlength="11" inputmode="numeric"
-              style="width:100%;border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;margin-bottom:11px;box-sizing:border-box;"
-              onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
+            <div data-empresa-only>
+              <input type="text" id="hero-ruc" name="ruc" placeholder="RUC de tu empresa" maxlength="11" inputmode="numeric"
+                style="width:100%;border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;margin-bottom:11px;box-sizing:border-box;"
+                onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
+            </div>
 
             <!-- Nombres | Apellidos -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
@@ -1213,15 +1267,19 @@
             </div>
 
             <!-- Filas dinámicas: RUC de clientes -->
-            <div id="hero-client-rows" style="display:flex;flex-direction:column;gap:10px;margin-bottom:10px;"></div>
+            <div data-empresa-only>
+              <div id="hero-client-rows" style="display:flex;flex-direction:column;gap:10px;margin-bottom:10px;"></div>
+            </div>
 
             <!-- Botón agregar cliente -->
-            <button type="button" onclick="heroAddClient()"
-              style="background:none;border:none;padding:0 0 12px;font-family:'Acumin Pro',sans-serif;font-size:14px;font-weight:700;color:#1B365F;opacity:0.5;cursor:pointer;letter-spacing:0.04em;display:inline-flex;align-items:center;gap:5px;"
-              onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>
-              Agregar cliente
-            </button>
+            <div data-empresa-only>
+              <button type="button" onclick="heroAddClient()"
+                style="background:none;border:none;padding:0 0 12px;font-family:'Acumin Pro',sans-serif;font-size:14px;font-weight:700;color:#1B365F;opacity:0.5;cursor:pointer;letter-spacing:0.04em;display:inline-flex;align-items:center;gap:5px;"
+                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>
+                Agregar cliente
+              </button>
+            </div>
 
             <!-- Autorización de datos -->
             <label style="display:flex;align-items:flex-start;gap:8px;font-family:'Acumin Pro',sans-serif;font-size:13px;color:#1B365F;opacity:0.65;line-height:1.5;margin-bottom:16px;cursor:pointer;">
@@ -1419,7 +1477,7 @@
         <div class="svc-card reveal">
           <div class="svc-face-front">
             <div class="aspect-[32/26] w-full overflow-hidden" style="background:#1B365F;">
-              <img src="/brand-assets/optimized/ref-inversionistas.jpg" alt="Opciones de inversión" loading="lazy" decoding="async"
+              <img src="/brand-assets/ref-inversionistas.jpg" alt="Opciones de inversión" loading="lazy" decoding="async"
                    class="svc-card-img h-full w-full object-cover" />
             </div>
             <div class="flex flex-1 flex-col gap-4 p-6 lg:p-7">
@@ -1495,7 +1553,7 @@
           </svg>
         </div>
         <h3 class="font-display font-bold text-tc-navy text-[17px] lg:text-[18px] tracking-[-0.01em] mb-2 leading-tight">
-          Liquidez en 24 horas
+          Liquidez inmediata
         </h3>
         <p class="font-body text-tc-navy/60 text-[13px] lg:text-[14px] leading-[1.65]">
           Evaluamos y desembolsamos tu operación en menos de 24 horas. Liquidez inmediata cuando tu empresa más lo necesita.
@@ -1562,23 +1620,64 @@
 
     <!-- Header -->
     <div class="text-center mb-5">
-      <p class="font-accent text-tc-navy font-bold text-center text-[18px] lg:text-[25px] tracking-[-0.01em]">Nuestros clientes:</p>
+      <p class="font-accent text-tc-navy font-bold text-center text-[18px] lg:text-[25px] tracking-[-0.01em]">Nuestros pagadores:</p>
       <p class="font-body text-center text-tc-navy/50 text-[14.2px] mt-1">Más de 50 líneas aprobadas</p>
     </div>
 
+    <!-- Logo marquee -->
+    <div class="payer-logo-marquee" aria-label="Nuestros pagadores">
+      <div class="payer-logo-track">
+        <div class="payer-logo-set is-active" data-payer-panel="0">
+          <div class="payer-logo-item"><img src="/brand-assets/cenco.jpg" alt="Cencosud" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/agrovisión.jpg" alt="Agrovision" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/besco.png" alt="Besco S.A.C" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/los_portales.jpg" alt="Los Portales" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/volcan.png" alt="Volcan Compañía Minera" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/southern.jpg" alt="Southern Copper" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/gloria.jpg" alt="Gloria" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/falabella.png" alt="Falabella" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/softys.jpg" alt="Softys" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/backus.jpg" alt="Backus" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/ripley.jpg" alt="Ripley" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/oxxo.png" alt="Oxxo" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/entel.png" alt="Entel" loading="lazy" decoding="async" /></div>
+        </div>
+        <div class="payer-logo-set" data-payer-panel="1" aria-hidden="true">
+          <div class="payer-logo-item"><img src="/brand-assets/cenco.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/agrovisión.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/besco.png" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/los_portales.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/volcan.png" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/southern.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/gloria.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/falabella.png" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/softys.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/backus.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/ripley.jpg" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/oxxo.png" alt="" loading="lazy" decoding="async" /></div>
+          <div class="payer-logo-item"><img src="/brand-assets/entel.png" alt="" loading="lazy" decoding="async" /></div>
+        </div>
+      </div>
+      <button class="payer-logo-next" type="button" aria-label="Ver más pagadores" data-payer-next>
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
     <!-- Logo slots: 7 images in a row -->
-    <div class="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
+    <div hidden style="display:none !important;" class="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
       <!-- Logo 1 — reemplazar src con tu imagen -->
       <div class="flex items-center justify-center" style="height:80px; width:160px;">
         <img src="/brand-assets/cenco.jpg" alt="Cencosud" loading="lazy" decoding="async" style="max-height:70px; max-width:160px; width:auto; height:auto; object-fit:contain; opacity:1;" />
       </div>
       <!-- Logo 2: Agrovision -->
-      <div class="flex items-center justify-center" style="height:80px; width:160px;">
-        <img src="/brand-assets/agrovisión.jpg" alt="Agrovision" loading="lazy" decoding="async" style="max-height:100px; max-width:160px; width:auto; height:auto; object-fit:contain; opacity:1;" />
+      <div class="flex items-center justify-center" style="height:150px; width:180px;">
+        <img src="/brand-assets/agrovisión.jpg" alt="Agrovision" loading="lazy" decoding="async" style="max-height:150px; max-width:160px; width:auto; object-fit:contain; opacity:1;" />
       </div>
       <!-- Logo 3: Besco -->
-      <div class="flex items-center justify-center" style="height:80px; width:160px;">
-        <img src="/brand-assets/besco.png" alt="Besco S.A.C" loading="lazy" decoding="async" style="max-height:120px; max-width:160px; width:auto; height:auto; object-fit:contain; opacity:1;" />
+      <div class="flex items-center justify-center" style="height:200px; width:160px;">
+        <img src="/brand-assets/besco.png" alt="Besco S.A.C" loading="lazy" decoding="async" style="max-height:300px; max-width:160px; width:auto; height:auto; object-fit:contain; opacity:1;" />
       </div>
       <!-- Logo 4: Los Portales -->
       <div class="flex items-center justify-center" style="height:80px; width:160px;">
@@ -1675,6 +1774,22 @@
                 </a>
               </div>
 
+              <!-- Milagros Vivar -->
+              <div style="text-align:center;">
+                <div class="nos-team-photo">
+                  <svg style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                    <circle cx="21" cy="17" r="9" fill="#1B365F" fill-opacity=".2"/>
+                    <path d="M4 40c0-9.39 7.61-17 17-17s17 7.61 17 17" stroke="#1B365F" stroke-opacity=".2" stroke-width="1.5"/>
+                  </svg>
+                  <img src="/brand-assets/ref-milagros.jpeg" alt="Milagros Vivar" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" onerror="this.style.opacity=0"/>
+                </div>
+                <p style="font-family:'Acumin Pro',sans-serif; font-weight:700; font-size:15px; color:#1B365F; margin:0 0 3px; line-height:1.25;">Milagros Vivar</p>
+                <p style="font-family:'Acumin Pro',sans-serif; font-size:12px; color:#EF3346; margin:0 0 11px; line-height:1.4;">Gerente Comercial</p>
+                <a href="https://www.linkedin.com/in/milagros-vivar-1138a695/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Milagros Vivar" class="team-linkedin-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.76c1.4-2.59 7-2.78 7 2.48V19z"/></svg>
+                </a>
+              </div>
+
               <!-- Mateo Pacheco -->
               <div style="text-align:center;">
                 <div class="nos-team-photo">
@@ -1707,32 +1822,18 @@
                 </a>
               </div>
 
-              <!-- Slot 5 (placeholder) -->
+              <!-- Santiago García -->
               <div style="text-align:center;">
                 <div class="nos-team-photo">
                   <svg style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);" width="42" height="42" viewBox="0 0 42 42" fill="none">
                     <circle cx="21" cy="17" r="9" fill="#1B365F" fill-opacity=".2"/>
                     <path d="M4 40c0-9.39 7.61-17 17-17s17 7.61 17 17" stroke="#1B365F" stroke-opacity=".2" stroke-width="1.5"/>
                   </svg>
+                  <img src="/brand-assets/ref-santiago.jpg" alt="Santiago García" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" onerror="this.style.opacity=0"/>
                 </div>
                 <p style="font-family:'Acumin Pro',sans-serif; font-weight:700; font-size:15px; color:#1B365F; margin:0 0 3px; line-height:1.25;">Santiago García</p>
                 <p style="font-family:'Acumin Pro',sans-serif; font-size:12px; color:#EF3346; margin:0 0 11px; line-height:1.4;">Asistente</p>
                 <a href="https://www.linkedin.com/in/santiago-garc%C3%ADa-moscol-b21442399/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Santiago García Moscol" class="team-linkedin-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.76c1.4-2.59 7-2.78 7 2.48V19z"/></svg>
-                </a>
-              </div>
-
-              <!-- Slot 6 (placeholder) -->
-              <div style="text-align:center;">
-                <div class="nos-team-photo">
-                  <svg style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);" width="42" height="42" viewBox="0 0 42 42" fill="none">
-                    <circle cx="21" cy="17" r="9" fill="#1B365F" fill-opacity=".2"/>
-                    <path d="M4 40c0-9.39 7.61-17 17-17s17 7.61 17 17" stroke="#1B365F" stroke-opacity=".2" stroke-width="1.5"/>
-                  </svg>
-                </div>
-                <p style="font-family:'Acumin Pro',sans-serif; font-weight:700; font-size:15px; color:#1B365F; margin:0 0 3px; line-height:1.25;">Milagros Vivar</p>
-                <p style="font-family:'Acumin Pro',sans-serif; font-size:12px; color:#EF3346; margin:0 0 11px; line-height:1.4;">Gerente Comercial</p>
-                <a href="https://www.linkedin.com/in/milagros-vivar-1138a695/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Milagros Vivar" class="team-linkedin-icon">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.76c1.4-2.59 7-2.78 7 2.48V19z"/></svg>
                 </a>
               </div>
@@ -1771,9 +1872,7 @@
               <div>
                 <h3 class="font-display text-tc-navy text-[18px] mb-2">¿Qué hacemos?</h3>
                 <p class="text-[17.1px] leading-[1.7] text-tc-navy/65">
-                  Facilitamos liquidez inmediata a proveedores que necesitan capital de trabajo y ayudamos a empresas a optimizar
-                  su estructura de capital, gestionar sus riesgos financieros y ejecutar estrategias de fusiones, adquisiciones y crecimiento
-                  corporativo. Al mismo tiempo, ofrecemos a inversionistas una alternativa sólida y rentable con retornos de corto plazo
+                  Facilitamos liquidez a proveedores mediante la negociación de facturas y estructuramos líneas de confirming para que las empresas optimicen la gestión de pagos a sus proveedores. Al mismo tiempo, ofrecemos a inversionistas una alternativa sólida y rentable con retornos de corto plazo
                   respaldados por activos reales.
                 </p>
               </div>
@@ -1953,11 +2052,15 @@
         <!-- Mateo Pacheco -->
         <div>
           <p class="font-display font-bold text-tc-navy text-[15px] mb-1">Mateo Pacheco <span class="font-body font-normal text-tc-navy/50 text-[13px]">— Asociado comercial</span></p>
-          <a href="https://wa.link/837e4n" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-body text-[14px] text-tc-navy/65 hover:text-tc-navy transition-colors duration-200 mb-0.5">
+          <a href="mailto:mateo.pacheco@teconfirmo.pe" class="block font-body text-[14px] text-tc-red hover:text-tc-red-deep transition-colors duration-200 mb-2.5">mateo.pacheco@teconfirmo.pe</a>
+          <a href="https://wa.link/837e4n" target="_blank" rel="noopener" aria-label="Escríbele a Mateo Pacheco por WhatsApp" class="group inline-flex items-center gap-2 rounded-lg bg-tc-navy/95 px-4 py-2.5 font-body text-[14px] font-medium text-white shadow-sm transition-all duration-200 hover:bg-tc-navy-deep hover:shadow-md hover:-translate-y-0.5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px; height:16px; flex-shrink:0;" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            (51) 935 529 935
+            <span>(51) 935 529 935</span>
+            <svg viewBox="0 0 24 24" style="width:12px; height:12px; flex-shrink:0; opacity:0.75; transition:transform 0.2s ease;" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/>
+              <path d="M8 7h9v9"/>
+            </svg>
           </a>
-          <a href="mailto:mateo.pacheco@teconfirmo.pe" class="block font-body text-[14px] text-tc-red hover:text-tc-red-deep transition-colors duration-200">mateo.pacheco@teconfirmo.pe</a>
         </div>
 
         <!-- Separador vertical (solo desktop) -->
@@ -1966,11 +2069,15 @@
         <!-- Milagros Vivar -->
         <div>
           <p class="font-display font-bold text-tc-navy text-[15px] mb-1">Milagros Vivar <span class="font-body font-normal text-tc-navy/50 text-[13px]">— Gerente comercial</span></p>
-          <a href="https://wa.link/1yn8i2" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-body text-[14px] text-tc-navy/65 hover:text-tc-navy transition-colors duration-200 mb-0.5">
+          <a href="mailto:milagros.vivar@teconfirmo.pe" class="block font-body text-[14px] text-tc-red hover:text-tc-red-deep transition-colors duration-200 mb-2.5">milagros.vivar@teconfirmo.pe</a>
+          <a href="https://wa.link/1yn8i2" target="_blank" rel="noopener" aria-label="Escríbele a Milagros Vivar por WhatsApp" class="group inline-flex items-center gap-2 rounded-lg bg-tc-navy/95 px-4 py-2.5 font-body text-[14px] font-medium text-white shadow-sm transition-all duration-200 hover:bg-tc-navy-deep hover:shadow-md hover:-translate-y-0.5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px; height:16px; flex-shrink:0;" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            (51) 987 110 903
+            <span>(51) 987 110 903</span>
+            <svg viewBox="0 0 24 24" style="width:12px; height:12px; flex-shrink:0; opacity:0.75; transition:transform 0.2s ease;" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"/>
+              <path d="M8 7h9v9"/>
+            </svg>
           </a>
-          <a href="mailto:milagros.vivar@teconfirmo.pe" class="block font-body text-[14px] text-tc-red hover:text-tc-red-deep transition-colors duration-200">milagros.vivar@teconfirmo.pe</a>
         </div>
 
       </div>
@@ -2243,7 +2350,7 @@
   function restartLogoAnimation() {
     var intro = slides[0];
     if (!intro) return;
-    intro.querySelectorAll('.hero-logo-word, .hero-logo-capital, .hero-logo-mark').forEach(function (el) {
+    intro.querySelectorAll('.hero-logo-image').forEach(function (el) {
       el.style.animation = 'none';
       void el.offsetWidth;
       el.style.animation = '';
@@ -2506,6 +2613,63 @@ window.nosLeftSlide = function (index) {
 })();
 </script>
 
+<!-- Payer logos: desplazamiento manual -->
+<script>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-payer-next]');
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-payer-panel]'));
+    var activeIndex = 0;
+    if (!button || panels.length < 2) return;
+
+    button.addEventListener('click', function () {
+      activeIndex = activeIndex === 0 ? 1 : 0;
+      panels.forEach(function (panel, index) {
+        var isActive = index === activeIndex;
+        panel.classList.toggle('is-active', isActive);
+        panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+    });
+  });
+})();
+</script>
+
+<!-- Hero form: selector Empresa / Inversionista -->
+<script>
+(function () {
+  function setHeroFormType(type) {
+    var isEmpresa = type === 'empresa';
+    var value = document.getElementById('hero-form-type-value');
+    if (value) value.value = type;
+
+    document.querySelectorAll('[data-hero-form-type]').forEach(function (button) {
+      var isActive = button.getAttribute('data-hero-form-type') === type;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('[data-empresa-only]').forEach(function (element) {
+      element.hidden = !isEmpresa;
+      element.querySelectorAll('input, select, textarea, button').forEach(function (control) {
+        if (control.type !== 'button') control.disabled = !isEmpresa;
+      });
+    });
+  }
+
+  window.setHeroFormType = setHeroFormType;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-hero-form-type]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        setHeroFormType(button.getAttribute('data-hero-form-type'));
+      });
+    });
+
+    setHeroFormType('empresa');
+  });
+})();
+</script>
+
 <!-- Netlify Forms: envio sin redireccion y confirmacion visual -->
 <script>
 (function () {
@@ -2556,6 +2720,9 @@ window.nosLeftSlide = function (index) {
         if (!form.reportValidity()) return;
 
         setSubmitting(form, true);
+        var submittedHeroType = form.id === 'hero-form'
+          ? document.getElementById('hero-form-type-value').value
+          : null;
 
         fetch(form.getAttribute('action') || '/', {
           method: 'POST',
@@ -2565,6 +2732,9 @@ window.nosLeftSlide = function (index) {
           .then(function (response) {
             if (!response.ok) throw new Error('Form submission failed');
             form.reset();
+            if (submittedHeroType && window.setHeroFormType) {
+              window.setHeroFormType(submittedHeroType);
+            }
             var counter = document.getElementById('char-count');
             if (counter) counter.textContent = '0';
             showSuccessToast();
