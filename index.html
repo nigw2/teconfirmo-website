@@ -210,16 +210,15 @@
       left: 50%;
       width: calc(100vw - 2px);
       margin-left: calc(-50vw + 1px);
-      padding-left: 62px;
-      padding-right: 62px;
+      padding: 0;
     }
     .payer-logo-track {
       display: flex;
-      width: 100%;
+      width: max-content;
       min-height: 130px;
       align-items: center;
-      overflow: hidden;
-      position: relative;
+      animation: payerLogoScrollRight 62s linear infinite;
+      will-change: transform;
     }
     .payer-logo-item {
       display: flex;
@@ -253,57 +252,17 @@
     .payer-logo-item img[src*="softys"]      { max-height: 100px;  max-width: 187px; }
 
     .payer-logo-set {
-      position: absolute;
-      inset: 0;
       display: flex;
       align-items: center;
-      justify-content: space-around;
       gap: 34px;
-      width: 100%;
-      flex: 0 0 100%;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-    .payer-logo-set.is-active {
-      opacity: 1;
-      pointer-events: auto;
+      padding-right: 34px;
     }
     .payer-logo-set[aria-hidden="true"] {
       display: flex;
     }
-    .payer-logo-set[data-payer-panel="0"] .payer-logo-item:nth-child(n+7),
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(-n+6),
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(13) {
-      display: none;
-    }
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(7) { order: 1; }
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(10) { order: 2; }
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(11) { order: 3; }
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(12) { order: 4; }
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(8) { order: 5; }
-    .payer-logo-set[data-payer-panel="1"] .payer-logo-item:nth-child(9) { order: 6; }
-    .payer-logo-next {
-      position: absolute;
-      top: 50%;
-      right: 16px;
-      z-index: 2;
-      display: inline-flex;
-      width: 38px;
-      height: 38px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(27, 54, 95, 0.16);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.94);
-      color: #1B365F;
-      cursor: pointer;
-      transform: translateY(-50%);
-      transition: background 0.2s ease, box-shadow 0.2s ease;
-    }
-    .payer-logo-next:hover {
-      background: #fff;
-      box-shadow: 0 8px 24px rgba(27, 54, 95, 0.13);
+    @keyframes payerLogoScrollRight {
+      from { transform: translate3d(-50%, 0, 0); }
+      to { transform: translate3d(0, 0, 0); }
     }
 
     /* ── Thin gold rule decorative element ───────────────────── */
@@ -1658,11 +1617,6 @@
           <div class="payer-logo-item"><img src="/brand-assets/entel.png" alt="" loading="lazy" decoding="async" /></div>
         </div>
       </div>
-      <button class="payer-logo-next" type="button" aria-label="Ver más pagadores" data-payer-next>
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
     </div>
 
     <!-- Logo slots: 7 images in a row -->
@@ -2613,27 +2567,6 @@ window.nosLeftSlide = function (index) {
 })();
 </script>
 
-<!-- Payer logos: desplazamiento manual -->
-<script>
-(function () {
-  document.addEventListener('DOMContentLoaded', function () {
-    var button = document.querySelector('[data-payer-next]');
-    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-payer-panel]'));
-    var activeIndex = 0;
-    if (!button || panels.length < 2) return;
-
-    button.addEventListener('click', function () {
-      activeIndex = activeIndex === 0 ? 1 : 0;
-      panels.forEach(function (panel, index) {
-        var isActive = index === activeIndex;
-        panel.classList.toggle('is-active', isActive);
-        panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-      });
-    });
-  });
-})();
-</script>
-
 <!-- Hero form: selector Empresa / Inversionista -->
 <script>
 (function () {
@@ -2714,6 +2647,10 @@ window.nosLeftSlide = function (index) {
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, document.title, window.location.href);
+    }
+
     document.querySelectorAll('form[data-netlify="true"]').forEach(function (form) {
       form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -2740,7 +2677,7 @@ window.nosLeftSlide = function (index) {
             showSuccessToast();
           })
           .catch(function () {
-            form.submit();
+            console.error('No se pudo enviar el formulario.');
           })
           .finally(function () {
             setSubmitting(form, false);
