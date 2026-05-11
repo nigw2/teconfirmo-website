@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teconfirmo Capital </title>
+  <link rel="icon" href="/brand-assets/logo-color-fondo-azul.png" type="image/png" />
   <meta name="description" content="Factoring electrónico, Confirming a proveedores y opciones de inversión de corto plazo. Fintech peruana con más de una década financiando empresas." />
 
   <!-- Preload above-the-fold fonts -->
@@ -626,50 +627,53 @@
       background: #fff;
       overflow-y: auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 54px 72px;
+      padding: 28px 54px 30px;
     }
     .nos-left-panel-inner {
       width: 100%;
-      max-width: 650px;
+      max-width: 720px;
     }
     .nos-left-back {
-      margin-bottom: 38px !important;
+      margin-bottom: 18px !important;
     }
     .nos-team-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      column-gap: 28px;
-      row-gap: 34px;
+      column-gap: 24px;
+      row-gap: 20px;
     }
     .nos-team-photo {
       position: relative;
-      width: 120px;
-      height: 120px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 0 auto 12px;
+      margin: 0 auto 9px;
       background: #D0DAEA;
     }
     .nos-team-grid > div {
       min-width: 0;
     }
+    .nos-team-grid .team-member-center {
+      grid-column: 2;
+    }
     .nos-team-grid p:first-of-type {
-      font-size: 14.5px !important;
-      margin-bottom: 3px !important;
+      font-size: 13.5px !important;
+      margin-bottom: 2px !important;
     }
     .nos-team-grid p:nth-of-type(2) {
-      font-size: 11.5px !important;
-      min-height: 32px;
-      margin-bottom: 8px !important;
+      font-size: 10.8px !important;
+      min-height: 28px;
+      margin-bottom: 6px !important;
     }
     .nos-team-grid .team-linkedin-icon {
       display: inline-flex !important;
       align-items: center;
       justify-content: center;
-      width: 30px !important;
-      height: 30px !important;
+      width: 28px !important;
+      height: 28px !important;
       padding: 0 !important;
       border-radius: 6px !important;
       background: #0A66C2 !important;
@@ -692,35 +696,44 @@
       }
       .nos-left-panel {
         align-items: flex-start;
-        padding: 34px 18px 40px;
+        padding: 24px 18px 34px;
       }
       .nos-left-panel-inner {
         max-width: 360px;
       }
       .nos-left-back {
-        margin-bottom: 28px !important;
+        margin-bottom: 18px !important;
       }
       .nos-team-grid {
-        grid-template-columns: 1fr 1fr;
-        column-gap: 16px;
-        row-gap: 26px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 10px;
+        row-gap: 16px;
+      }
+      .nos-team-grid .team-member-center {
+        grid-column: 2;
+        width: auto;
+        justify-self: center;
       }
       .nos-team-photo {
-        width: 96px;
-        height: 96px;
-        margin-bottom: 11px;
+        width: 72px;
+        height: 72px;
+        margin-bottom: 7px;
       }
       .nos-team-grid p:first-of-type {
-        font-size: 13px !important;
+        font-size: 11px !important;
       }
       .nos-team-grid p:nth-of-type(2) {
-        font-size: 10.5px !important;
-        min-height: 30px;
-        margin-bottom: 6px !important;
+        font-size: 9.6px !important;
+        min-height: 26px;
+        margin-bottom: 5px !important;
       }
       .nos-team-grid .team-linkedin-icon {
-        width: 28px !important;
-        height: 28px !important;
+        width: 24px !important;
+        height: 24px !important;
+      }
+      .nos-team-grid .team-linkedin-icon svg {
+        width: 14px;
+        height: 14px;
       }
     }
 
@@ -942,6 +955,284 @@
       box-shadow: 0 10px 28px rgba(27, 54, 95, 0.13);
     }
 
+    /* Responsive audit fixes: mobile <=480, tablet 481-768, laptop 769-1024 */
+    img {
+      max-width: 100%;
+    }
+    #hero-form input {
+      min-width: 0;
+    }
+    @media (max-width: 1024px) {
+      [data-navbar] .nav-logo-wrap {
+        margin-left: 0 !important;
+      }
+      .nav-logo,
+      .nav-logo-negative {
+        height: clamp(32px, 8vw, 38px) !important;
+        max-width: min(46vw, 150px);
+        object-fit: contain;
+      }
+    }
+    @media (max-width: 1023px) {
+      [data-navbar] > div:first-child {
+        padding: 0.75rem 1rem !important;
+      }
+      [data-navbar] .nav-logo-wrap {
+        margin-left: 0 !important;
+      }
+      .nav-logo,
+      .nav-logo-negative {
+        height: clamp(32px, 8vw, 38px) !important;
+        max-width: min(46vw, 150px);
+        object-fit: contain;
+      }
+      #inicio {
+        height: 100svh !important;
+        min-height: 680px !important;
+      }
+      .hero-slide {
+        transform: translate3d(0, 0, 0);
+      }
+      .hero-slide-current > [aria-hidden="true"] {
+        inset: 0 !important;
+        background-position: 50% 66% !important;
+      }
+      #hero-content {
+        width: 100% !important;
+      }
+      #hero-content > div {
+        width: 100% !important;
+        min-height: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: clamp(5rem, 13vh, 7.5rem) 1.5rem clamp(5.5rem, 11vh, 7rem) !important;
+      }
+      #hero-content > div > div:first-child {
+        width: 100% !important;
+        max-width: 44rem;
+        min-height: 0;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        text-align: center;
+      }
+      #hero-content h1 {
+        max-width: 100%;
+        margin-top: 0 !important;
+        font-size: clamp(2.4rem, 9.8vw, 4.125rem) !important;
+        line-height: 1.05 !important;
+        white-space: normal !important;
+        text-align: center;
+      }
+      #hero-content h1 span {
+        display: inline !important;
+      }
+      #hero-content p {
+        max-width: 34ch !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        font-size: clamp(1rem, 3.4vw, 1.125rem) !important;
+        line-height: 1.58 !important;
+      }
+      #hero-content .flex.flex-wrap {
+        justify-content: center;
+      }
+      .hero-ghost-btn {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.09);
+        color: #ffffff !important;
+      }
+      .hero-carousel-next {
+        right: 1rem;
+        bottom: 1rem;
+        width: 40px;
+        height: 40px;
+      }
+      .hero-carousel-dots {
+        bottom: 1.35rem;
+      }
+      .hero-logo-image {
+        width: clamp(230px, 76vw, 420px);
+      }
+      #nosotros > div > div:first-child {
+        height: clamp(360px, 74vw, 520px);
+        min-height: 0 !important;
+      }
+      #nosotros > div > div:first-child.nos-team-open {
+        height: auto;
+        min-height: clamp(520px, 88svh, 680px) !important;
+      }
+      #nos-left-track {
+        height: 100% !important;
+        min-height: 0 !important;
+      }
+      .nos-team-open #nos-left-track {
+        height: auto !important;
+        min-height: inherit !important;
+      }
+      #nos-left-track > div:first-child img {
+        object-position: center 78%;
+      }
+      .nos-left-panel {
+        height: 100%;
+        padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+      }
+      .nos-team-open .nos-left-panel {
+        min-height: inherit;
+      }
+      .nos-left-panel-inner {
+        max-width: min(100%, 640px);
+      }
+      .nos-team-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .nos-team-grid p {
+        overflow-wrap: anywhere;
+      }
+      .nos-right-panel {
+        min-height: auto;
+        padding: clamp(3rem, 8vw, 4.5rem) clamp(1.25rem, 5vw, 2rem) clamp(5.25rem, 10vw, 6.5rem) !important;
+        border-left: 0 !important;
+      }
+      #nos-slider {
+        width: 100%;
+        margin-left: 0 !important;
+        overflow-x: hidden !important;
+      }
+      .nos-right-panel .tc-title-highlight {
+        white-space: normal;
+      }
+      .nos-right-panel h2 {
+        font-size: clamp(2rem, 7vw, 2.75rem) !important;
+        line-height: 1.08 !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .nos-right-panel h3 {
+        font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+      }
+      .nos-right-panel p {
+        font-size: clamp(0.95rem, 3.2vw, 1rem) !important;
+      }
+      .nos-controls {
+        left: 1.25rem;
+        right: 1.25rem;
+        bottom: 1.75rem;
+      }
+      #nos-arrow {
+        right: 0 !important;
+      }
+      .reg-logo-row {
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 480px) {
+      [data-navbar] > div:first-child {
+        padding: 0.7rem 1rem !important;
+      }
+      .nav-logo,
+      .nav-logo-negative {
+        height: clamp(29px, 8.5vw, 34px) !important;
+        max-width: 44vw;
+      }
+      #inicio {
+        min-height: 640px !important;
+      }
+      #hero-content > div {
+        padding-right: 1.25rem !important;
+        padding-left: 1.25rem !important;
+      }
+      #hero-content h1 {
+        font-size: clamp(2.15rem, 10.4vw, 2.9rem) !important;
+      }
+      #hero-content .flex.flex-wrap {
+        width: min(100%, 18.5rem);
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .hero-cta-primary,
+      .hero-ghost-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 20px !important;
+        font-size: 14px !important;
+      }
+      .hero-logo-image {
+        width: clamp(220px, 74vw, 330px);
+      }
+      #nosotros > div > div:first-child {
+        height: clamp(320px, 84vw, 380px);
+      }
+      #nosotros > div > div:first-child.nos-team-open {
+        min-height: 560px !important;
+      }
+      .nos-team-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 8px;
+        row-gap: 14px;
+      }
+      .nos-right-panel {
+        padding-right: 1.1rem !important;
+        padding-left: 1.1rem !important;
+      }
+      .nos-controls {
+        left: 1.1rem;
+        right: 1.1rem;
+      }
+      .reg-logo-row {
+        gap: 14px;
+      }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+      #servicios .svc-panel > .grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+      #why .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      #hero-content h1 {
+        font-size: clamp(3.1rem, 5.6vw, 3.8rem) !important;
+        white-space: normal !important;
+      }
+      #hero-content > div > div:first-child {
+        width: 54% !important;
+        align-items: flex-start;
+        text-align: left;
+        padding-top: 48vh !important;
+        padding-bottom: 10vh !important;
+      }
+      #hero-content p {
+        margin-left: 0 !important;
+        max-width: 40ch !important;
+      }
+      .hero-ghost-btn {
+        color: #1B365F !important;
+        background: transparent;
+        border-color: rgba(27, 54, 95, 0.25);
+      }
+      #hero-content > div > div.hidden.lg\:flex {
+        width: 46% !important;
+        padding-top: 16vh !important;
+        padding-bottom: 8vh !important;
+      }
+      .hero-form-shell {
+        max-width: 420px !important;
+        padding: 24px 22px 22px !important;
+      }
+      .hero-form-shell h3 {
+        font-size: 23px !important;
+      }
+      .hero-form-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 10px !important;
+      }
+      #hero-form label {
+        font-size: 12.5px !important;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -1026,13 +1317,6 @@
               </div>
             </div>
           </li>
-
-          <li>
-            <a href="#blog"
-               class="nav-link font-accent text-[12px] uppercase tracking-[0.22em] text-tc-navy/65 transition-colors duration-200 hover:text-tc-navy">
-              Blog
-            </a>
-          </li>
           <li>
             <a href="#contacto"
                class="nav-link font-accent text-[12px] uppercase tracking-[0.22em] text-tc-navy/65 transition-colors duration-200 hover:text-tc-navy">
@@ -1104,7 +1388,6 @@
               </a>
             </div>
           </div>
-          <a href="#blog"      class="block rounded-lg px-3 py-2.5 font-accent text-[12px] uppercase tracking-[0.18em] text-tc-navy/70 hover:bg-tc-navy/5 hover:text-tc-navy">Blog</a>
           <a href="#contacto"  class="block rounded-lg px-3 py-2.5 font-accent text-[12px] uppercase tracking-[0.18em] text-tc-navy/70 hover:bg-tc-navy/5 hover:text-tc-navy">Contacto</a>
           <div class="pt-3">
             <a href="#contacto" class="block w-full rounded-full bg-tc-red py-3 text-center font-display text-[14px] font-bold text-white hover:bg-tc-red-deep transition-colors duration-200">Cotiza tu factura!</a>
@@ -1182,7 +1465,7 @@
       <!-- ── RIGHT: formulario ── -->
       <div class="hidden lg:flex items-center justify-end" style="width:42%;padding-top:12vh;padding-bottom:8vh;animation:heroFadeUp 0.7s ease-out 0.5s both;">
 
-        <div style="background:rgba(255,255,255,0.97);border-radius:14px;padding:31px 34px 26px;width:100%;max-width:516px;box-shadow:0 8px 40px rgba(0,0,0,0.18);">
+        <div class="hero-form-shell" style="background:rgba(255,255,255,0.97);border-radius:14px;padding:31px 34px 26px;width:100%;max-width:516px;box-shadow:0 8px 40px rgba(0,0,0,0.18);">
 
           <!-- Título -->
           <h3 style="font-family:'Acumin Pro',sans-serif;font-weight:700;font-size:26px;color:#1B365F ;text-align:center;margin:0 0 5px;">Déjanos tus datos</h3>
@@ -1206,7 +1489,7 @@
             </div>
 
             <!-- Nombres | Apellidos -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
+            <div class="hero-form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
               <input type="text" id="hero-nombres" name="nombres" placeholder="Nombres" inputmode="text"
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
@@ -1216,7 +1499,7 @@
             </div>
 
             <!-- Correo | Celular -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
+            <div class="hero-form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
               <input type="email" id="hero-email" name="email" placeholder="Correo"
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
@@ -1282,10 +1565,16 @@
 <section class="relative overflow-hidden" id="servicios" style="background-color:#ffffff;">
   <div class="mx-auto max-w-[1500px] px-4 lg:px-8 pt-16 lg:pt-20 pb-16 lg:pb-24">
 
-    <div class="reveal mb-10 lg:mb-14">
+    <div class="reveal mb-8 lg:mb-10">
       <h2 class="font-family font-semibold text-center text-tc-navy text-[47px] sm:text-[50px] lg:text-[53px] tracking-[-0.02em] leading-[1]">
         <span >Soluciones</span> diseñadas para dos perfiles
       </h2>
+    </div>
+
+    <!-- Tab switcher (above cards) -->
+    <div class="svc-tabs" style="margin-top:0; margin-bottom:2.5rem;">
+      <button class="svc-tab active" data-svc-tab="empresas">Empresas</button>
+      <button class="svc-tab" data-svc-tab="inversionistas">Inversionistas</button>
     </div>
 
     <!-- Panel: Empresas -->
@@ -1476,12 +1765,6 @@
 
       </div>
     </div><!-- end panel inversionistas -->
-
-    <!-- Tab switcher (below cards) -->
-    <div class="svc-tabs" style="margin-top:2.5rem; margin-bottom:0;">
-      <button class="svc-tab active" data-svc-tab="empresas">Empresas</button>
-      <button class="svc-tab" data-svc-tab="inversionistas">Inversionistas</button>
-    </div>
 
   </div>
 </section>
@@ -1693,7 +1976,7 @@
               Volver
             </button>
 
-            <!-- 2×2 grid -->
+            <!-- 3-3-1 grid -->
             <div class="nos-team-grid">
 
               <!-- Francisco Sardón -->
@@ -1724,6 +2007,22 @@
                 <p style="font-family:'Acumin Pro',sans-serif; font-weight:700; font-size:15px; color:#1B365F; margin:0 0 3px; line-height:1.25;">Alfredo Bejar</p>
                 <p style="font-family:'Acumin Pro',sans-serif; font-size:12px; color:#EF3346; margin:0 0 11px; line-height:1.4;">Gerente General y Socio Fundador</p>
                 <a href="https://www.linkedin.com/in/alfredo-bejar/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Alfredo Bejar" class="team-linkedin-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.76c1.4-2.59 7-2.78 7 2.48V19z"/></svg>
+                </a>
+              </div>
+
+              <!-- Miguel Pancorvo -->
+              <div style="text-align:center;">
+                <div class="nos-team-photo">
+                  <svg style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                    <circle cx="21" cy="17" r="9" fill="#1B365F" fill-opacity=".2"/>
+                    <path d="M4 40c0-9.39 7.61-17 17-17s17 7.61 17 17" stroke="#1B365F" stroke-opacity=".2" stroke-width="1.5"/>
+                  </svg>
+                  <img src="/brand-assets/ref-miguel.png" alt="Miguel Pancorvo" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" onerror="this.style.opacity=0"/>
+                </div>
+                <p style="font-family:'Acumin Pro',sans-serif; font-weight:700; font-size:15px; color:#1B365F; margin:0 0 3px; line-height:1.25;">Miguel Pancorvo</p>
+                <p style="font-family:'Acumin Pro',sans-serif; font-size:12px; color:#EF3346; margin:0 0 11px; line-height:1.4;">Director Independiente</p>
+                <a href="https://www.linkedin.com/in/miguel-pancorvo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Miguel Pancorvo" class="team-linkedin-icon">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.76c1.4-2.59 7-2.78 7 2.48V19z"/></svg>
                 </a>
               </div>
@@ -1777,13 +2076,13 @@
               </div>
 
               <!-- Santiago García -->
-              <div style="text-align:center;">
+              <div class="team-member-center" style="text-align:center;">
                 <div class="nos-team-photo">
                   <svg style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);" width="42" height="42" viewBox="0 0 42 42" fill="none">
                     <circle cx="21" cy="17" r="9" fill="#1B365F" fill-opacity=".2"/>
                     <path d="M4 40c0-9.39 7.61-17 17-17s17 7.61 17 17" stroke="#1B365F" stroke-opacity=".2" stroke-width="1.5"/>
-                  </svg>
-                  <img src="/brand-assets/ref-santiago.jpg" alt="Santiago García" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" onerror="this.style.opacity=0"/>
+                  </svg>"
+                  <img src="/brand-assets/ref-santiago.jpeg" alt="Santiago García" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" onerror="this.style.opacity=0"/>
                 </div>
                 <p style="font-family:'Acumin Pro',sans-serif; font-weight:700; font-size:15px; color:#1B365F; margin:0 0 3px; line-height:1.25;">Santiago García</p>
                 <p style="font-family:'Acumin Pro',sans-serif; font-size:12px; color:#EF3346; margin:0 0 11px; line-height:1.4;">Asistente</p>
@@ -1837,7 +2136,7 @@
           <!-- Panel 2: Nuestra esencia -->
           <div style="flex:0 0 100%; min-width:0;">
             <h2 class="font-display font-bold text-tc-navy text-[34px] sm:text-[44px] lg:text-[50px] tracking-[-0.025em] leading-[1.08] mb-8">
-              <span class="tc-title-highlight">Nuestra esencia:</span> 
+              <span class="tc-title-highlight">Nuestros pilares:</span> 
             </h2>
             <div class="space-y-7 font-body">
               <div>
@@ -2005,7 +2304,7 @@
 
         <!-- Mateo Pacheco -->
         <div>
-          <p class="font-display font-bold text-tc-navy text-[15px] mb-1">Mateo Pacheco <span class="font-body font-normal text-tc-navy/50 text-[13px]">— Asociado comercial</span></p>
+          <p class="font-display font-bold text-tc-navy text-[15px] mb-1">Mateo Pacheco <span class="font-body font-normal text-tc-navy/50 text-[13px]">— Asociado Comercial</span></p>
           <a href="mailto:mateo.pacheco@teconfirmo.pe" class="block font-body text-[14px] text-tc-red hover:text-tc-red-deep transition-colors duration-200 mb-2.5">mateo.pacheco@teconfirmo.pe</a>
           <a href="https://wa.link/837e4n" target="_blank" rel="noopener" aria-label="Escríbele a Mateo Pacheco por WhatsApp" class="group inline-flex items-center gap-2 rounded-lg bg-tc-navy/95 px-4 py-2.5 font-body text-[14px] font-medium text-white shadow-sm transition-all duration-200 hover:bg-tc-navy-deep hover:shadow-md hover:-translate-y-0.5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px; height:16px; flex-shrink:0;" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -2022,7 +2321,7 @@
 
         <!-- Milagros Vivar -->
         <div>
-          <p class="font-display font-bold text-tc-navy text-[15px] mb-1">Milagros Vivar <span class="font-body font-normal text-tc-navy/50 text-[13px]">— Gerente comercial</span></p>
+          <p class="font-display font-bold text-tc-navy text-[15px] mb-1">Milagros Vivar <span class="font-body font-normal text-tc-navy/50 text-[13px]">— Gerente Comercial</span></p>
           <a href="mailto:milagros.vivar@teconfirmo.pe" class="block font-body text-[14px] text-tc-red hover:text-tc-red-deep transition-colors duration-200 mb-2.5">milagros.vivar@teconfirmo.pe</a>
           <a href="https://wa.link/1yn8i2" target="_blank" rel="noopener" aria-label="Escríbele a Milagros Vivar por WhatsApp" class="group inline-flex items-center gap-2 rounded-lg bg-tc-navy/95 px-4 py-2.5 font-body text-[14px] font-medium text-white shadow-sm transition-all duration-200 hover:bg-tc-navy-deep hover:shadow-md hover:-translate-y-0.5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px; height:16px; flex-shrink:0;" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -2110,7 +2409,6 @@
         <h4 class="font-accent text-[11px] uppercase tracking-[0.24em] text-white/40 mb-5">Compañía</h4>
         <ul class="space-y-3">
           <li><a href="#nosotros"  class="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200">Sobre nosotros</a></li>
-          <li><a href="#blog"      class="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200">Blog</a></li>
           <li><a href="#contacto"  class="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200">Contacto</a></li>
         </ul>
       </div>
@@ -2359,6 +2657,8 @@
 window.nosLeftSlide = function (index) {
   var track = document.getElementById('nos-left-track');
   if (!track) return;
+  var viewport = track.parentElement;
+  if (viewport) viewport.classList.toggle('nos-team-open', index === 1);
   track.style.transform = index === 1 ? 'translateX(-50%)' : 'translateX(0)';
 };
 </script>
