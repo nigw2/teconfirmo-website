@@ -208,6 +208,105 @@
       color: #1B365F;
     }
 
+    .hero-company-need {
+      margin: 0 0 11px;
+    }
+    .hero-company-need__label {
+      display: block;
+      margin: 0 0 7px;
+      color: rgba(27, 54, 95, 0.62);
+      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .hero-company-choice {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 8px;
+    }
+    .hero-company-choice__option {
+      border: 1px solid rgba(207, 207, 207, 0.9);
+      border-radius: 10px;
+      background: #F8FAFC;
+      box-shadow: 0 1px 2px rgba(27, 54, 95, 0.05);
+      color: rgba(27, 54, 95, 0.62);
+      cursor: pointer;
+      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      padding: 10px 12px;
+      transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .hero-company-choice__option:hover {
+      border-color: rgba(27, 54, 95, 0.16);
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(27, 54, 95, 0.10);
+      color: #1B365F;
+      transform: translateY(-1px);
+    }
+    .hero-company-choice__option.is-active {
+      border-color: rgba(27, 54, 95, 0.18);
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(27, 54, 95, 0.13);
+      color: #1B365F;
+    }
+    .hero-form-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+    .hero-form-submit,
+    .hero-form-whatsapp {
+      display: inline-flex;
+      min-height: 47px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 14px;
+      font-family: 'Acumin Pro', 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .hero-form-submit {
+      width: 100%;
+      border: none;
+      background: #EF3346;
+      color: #fff;
+      cursor: pointer;
+    }
+    .hero-form-submit:hover {
+      background: #A4343E;
+      transform: translateY(-1px);
+    }
+    .hero-form-whatsapp {
+      gap: 7px;
+      border: 1px solid rgba(27, 54, 95, 0.22);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 6px 16px rgba(27, 54, 95, 0.10);
+      color: #1B365F;
+      white-space: nowrap;
+    }
+    .hero-form-whatsapp:hover {
+      border-color: rgba(27, 54, 95, 0.36);
+      background: #fff;
+      box-shadow: 0 9px 20px rgba(27, 54, 95, 0.14);
+      transform: translateY(-1px);
+    }
+    .hero-form-whatsapp svg {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+    }
+
     .payer-logo-marquee {
       overflow: hidden;
       position: relative;
@@ -316,6 +415,10 @@
     .hero-ghost-btn:hover {
       background: rgba(27,54,95,0.05);
       border-color: rgba(27,54,95,0.45);
+    }
+    .hero-cta-spacer {
+      flex: 0 0 auto;
+      height: clamp(28px, 4.2vh, 48px);
     }
 
     .hero-carousel {
@@ -1221,18 +1324,238 @@
         padding-bottom: 8vh !important;
       }
       .hero-form-shell {
-        max-width: 420px !important;
-        padding: 24px 22px 22px !important;
+        max-width: 410px !important;
+        padding: 20px 20px 20px !important;
       }
       .hero-form-shell h3 {
-        font-size: 23px !important;
+        font-size: 22px !important;
+        margin-bottom: 4px !important;
       }
       .hero-form-grid {
-        grid-template-columns: minmax(0, 1fr) !important;
-        gap: 10px !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 9px !important;
+      }
+      .hero-form-type {
+        margin-bottom: 10px;
+      }
+      .hero-form-type__option {
+        padding: 10px 10px;
+      }
+      .hero-company-need {
+        margin-bottom: 9px;
+      }
+      .hero-company-need__label {
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .hero-company-choice {
+        gap: 7px;
+      }
+      .hero-company-choice__option {
+        padding: 9px 10px;
+        font-size: 12.5px;
+      }
+      #hero-form input {
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+      }
+      #hero-client-rows {
+        gap: 8px !important;
+        margin-bottom: 8px !important;
+      }
+      .hero-form-actions {
+        gap: 8px;
+      }
+      .hero-form-submit,
+      .hero-form-whatsapp {
+        min-height: 44px;
+        padding: 11px 9px;
+        font-size: 13px;
+      }
+      .hero-form-whatsapp svg {
+        width: 15px;
+        height: 15px;
+        flex-basis: 15px;
       }
       #hero-form label {
         font-size: 12.5px !important;
+      }
+    }
+    @media (min-width: 1024px) and (max-width: 1180px) {
+      #inicio {
+        min-height: 640px !important;
+      }
+      #hero-content h1 {
+        font-size: clamp(48px, 5.1vw, 58px) !important;
+        white-space: normal !important;
+      }
+      #hero-content > div > div.hidden.lg\:flex {
+        padding-top: 6vh !important;
+        padding-bottom: 4vh !important;
+      }
+      .hero-form-shell {
+        max-width: 430px !important;
+        padding: 22px 24px 22px !important;
+      }
+      .hero-form-shell h3 {
+        font-size: 24px !important;
+        margin-bottom: 4px !important;
+      }
+      .hero-form-type {
+        margin-bottom: 10px;
+      }
+      .hero-form-type__option {
+        padding: 10px;
+      }
+      .hero-company-need {
+        margin-bottom: 9px;
+      }
+      .hero-company-need__label {
+        margin-bottom: 6px;
+        font-size: 12px;
+      }
+      .hero-company-choice {
+        gap: 7px;
+      }
+      .hero-company-choice__option {
+        padding: 9px 10px;
+        font-size: 12.5px;
+      }
+      #hero-ruc {
+        margin-bottom: 9px !important;
+      }
+      .hero-form-grid {
+        gap: 9px !important;
+        margin-bottom: 9px !important;
+      }
+      #hero-client-rows {
+        gap: 8px !important;
+        margin-bottom: 8px !important;
+      }
+      .hero-form-actions {
+        gap: 8px;
+      }
+      .hero-form-submit,
+      .hero-form-whatsapp {
+        min-height: 45px;
+        padding: 11px 10px;
+        font-size: 13px;
+      }
+      .hero-form-whatsapp svg {
+        width: 15px;
+        height: 15px;
+        flex-basis: 15px;
+      }
+      #hero-form > label {
+        margin-bottom: 13px !important;
+      }
+    }
+
+    @media (min-width: 1181px) {
+      .hero-copy {
+        padding-top: 52vh !important;
+        padding-bottom: 6.5vh !important;
+      }
+      .hero-form-panel {
+        align-items: flex-start !important;
+        padding-top: clamp(112px, 14.5vh, 148px) !important;
+        padding-bottom: clamp(48px, 6vh, 72px) !important;
+      }
+    }
+    @media (min-width: 1024px) and (max-width: 1180px) {
+      .hero-copy {
+        padding-top: 47vh !important;
+        padding-bottom: 5vh !important;
+      }
+      .hero-form-panel {
+        align-items: flex-start !important;
+        padding-top: 2.4vh !important;
+        padding-bottom: 4vh !important;
+      }
+      .hero-form-subtitle {
+        margin-bottom: 8px !important;
+      }
+    }
+    @media (max-width: 1023px) {
+      #inicio {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+      }
+      #inicio .hero-slide-current {
+        position: relative;
+        min-height: 0;
+      }
+      #inicio .hero-slide-current > [aria-hidden="true"] {
+        inset: -20px !important;
+        background-position: 50% 66% !important;
+      }
+      #hero-content {
+        height: auto !important;
+        min-height: 0 !important;
+      }
+      #hero-content .hero-layout {
+        height: auto !important;
+        min-height: 0 !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        padding: 0 !important;
+      }
+      #hero-content .hero-layout > .hero-copy {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 100svh !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: clamp(7.25rem, 18vh, 9rem) 1.5rem clamp(5.5rem, 11vh, 7rem) !important;
+        text-align: center !important;
+      }
+      .hero-form-panel {
+        display: flex !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        padding: 0 1.25rem 3.5rem !important;
+        animation: none !important;
+      }
+      .hero-form-shell {
+        width: min(100%, 520px) !important;
+        max-width: 520px !important;
+        padding: 24px 18px 22px !important;
+      }
+      .hero-form-shell h3 {
+        font-size: 24px !important;
+        margin-bottom: 4px !important;
+      }
+      .hero-form-subtitle {
+        margin-bottom: 14px !important;
+      }
+      .hero-form-grid {
+        gap: 10px !important;
+      }
+      .hero-carousel-next {
+        top: calc(100svh - 4.25rem);
+        right: 1rem;
+        bottom: auto;
+      }
+      .hero-carousel-dots {
+        top: calc(100svh - 3rem);
+        bottom: auto;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-form-grid,
+      .hero-company-choice,
+      .hero-form-actions {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+      .hero-form-actions {
+        gap: 9px;
+      }
+      .hero-form-submit,
+      .hero-form-whatsapp {
+        width: 100%;
+        min-height: 46px;
       }
     }
 
@@ -1418,10 +1741,10 @@
 
   <!-- Hero content -->
   <div id="hero-content" class="relative h-full" style="z-index:2;">
-    <div class="h-full px-6 sm:px-8 lg:px-12 flex flex-col lg:flex-row lg:items-stretch">
+    <div class="hero-layout h-full px-6 sm:px-8 lg:px-12 flex flex-col lg:flex-row lg:items-stretch">
 
       <!-- ── LEFT: headline (subido ~20%) + CTAs abajo ── -->
-      <div class="flex flex-col lg:pr-6" style="width:58%;padding-top:55vh;padding-bottom:10vh;">
+      <div class="hero-copy flex flex-col lg:pr-6" style="width:58%;padding-top:55vh;padding-bottom:10vh;">
 
         <!-- Headline -->
         <div class="hero-headline-block mb-4" style="animation:heroFadeUp 0.7s ease-out 0.3s both;">
@@ -1442,7 +1765,7 @@
         </div>
 
         <!-- Spacer — empuja CTAs al fondo -->
-        <div class="flex-1"></div>
+        <div class="hero-cta-spacer"></div>
 
         <!-- CTAs — exactamente igual que antes -->
         <div style="animation:heroFadeUp 0.7s ease-out 0.45s both;">
@@ -1466,13 +1789,13 @@
       <!-- /LEFT -->
 
       <!-- ── RIGHT: formulario ── -->
-      <div class="hidden lg:flex items-center justify-end" style="width:42%;padding-top:12vh;padding-bottom:8vh;animation:heroFadeUp 0.7s ease-out 0.5s both;">
+      <div class="hero-form-panel hidden lg:flex items-center justify-end" style="width:42%;padding-top:12vh;padding-bottom:8vh;animation:heroFadeUp 0.7s ease-out 0.5s both;">
 
         <div class="hero-form-shell" style="background:rgba(255,255,255,0.97);border-radius:14px;padding:31px 34px 26px;width:100%;max-width:516px;box-shadow:0 8px 40px rgba(0,0,0,0.18);">
 
           <!-- Título -->
           <h3 style="font-family:'Acumin Pro',sans-serif;font-weight:700;font-size:26px;color:#1B365F ;text-align:center;margin:0 0 5px;">Déjanos tus datos</h3>
-          <p style="font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;opacity:0.55;text-align:center;margin:0 0 19px;">Y nos comunicaremos contigo</p>
+          <p class="hero-form-subtitle" style="font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;opacity:0.55;text-align:center;margin:0 0 19px;">Y nos comunicaremos contigo</p>
 
           <form id="hero-form" name="cotizacion" method="POST" action="/" data-netlify="true" autocomplete="off">
 
@@ -1484,29 +1807,41 @@
               <button type="button" class="hero-form-type__option" data-hero-form-type="inversionista" aria-pressed="false">Inversionista</button>
             </div>
 
+            <!-- Necesidad empresa -->
+            <div data-empresa-only>
+              <div class="hero-company-need">
+                <span class="hero-company-need__label text-tc-nav">¿Qué necesita tu empresa?</span>
+                <input type="hidden" id="hero-company-need-value" name="necesidad_empresa" value="Factoring" />
+                <div class="hero-company-choice" aria-label="Necesidad de la empresa">
+                  <button type="button" class="hero-company-choice__option is-active" data-hero-company-need="Factoring" aria-pressed="true">FACTORING</button>
+                  <button type="button" class="hero-company-choice__option" data-hero-company-need="Confirming" aria-pressed="false">CONFIRMING</button>
+                </div>
+              </div>
+            </div>
+
             <!-- RUC empresa -->
             <div data-empresa-only>
-              <input type="text" id="hero-ruc" name="ruc" placeholder="RUC de tu empresa" maxlength="11" inputmode="numeric"
+              <input type="text" id="hero-ruc" name="ruc" placeholder="RUC de tu empresa" maxlength="11" inputmode="numeric" required
                 style="width:100%;border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;margin-bottom:11px;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
             </div>
 
             <!-- Nombres | Apellidos -->
             <div class="hero-form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
-              <input type="text" id="hero-nombres" name="nombres" placeholder="Nombres" inputmode="text"
+              <input type="text" id="hero-nombres" name="nombres" placeholder="Nombres" inputmode="text" required
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
-              <input type="text" id="hero-apellidos" name="apellidos" placeholder="Apellidos" inputmode="text"
+              <input type="text" id="hero-apellidos" name="apellidos" placeholder="Apellidos" inputmode="text" required
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
             </div>
 
             <!-- Correo | Celular -->
             <div class="hero-form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;">
-              <input type="email" id="hero-email" name="email" placeholder="Correo"
+              <input type="email" id="hero-email" name="email" placeholder="Correo" required
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
-              <input type="tel" id="hero-celular" name="celular" placeholder="Celular" maxlength="12" inputmode="numeric"
+              <input type="tel" id="hero-celular" name="celular" placeholder="Celular" maxlength="12" inputmode="numeric" required
                 style="border:1px solid #CFCFCF;border-radius:6px;padding:11px 14px;font-family:'Acumin Pro',sans-serif;font-size:15px;color:#1B365F;outline:none;box-sizing:border-box;"
                 onfocus="this.style.borderColor='#1B365F'" onblur="this.style.borderColor='#CFCFCF'" />
             </div>
@@ -1532,12 +1867,19 @@
               <span>Autorizo el uso de mis datos de acuerdo a las condiciones detalladas en <a href="#" style="color:#1B365F;text-decoration:underline;">Autorización para tratamiento de datos personales</a></span>
             </label>
 
-            <!-- Enviar -->
-            <button type="submit"
-              style="width:100%;background:#EF3346;color:#fff;border:none;border-radius:999px;padding:13px 0;font-family:'Acumin Pro',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.04em;cursor:pointer;transition:background 0.2s ease;"
-              onmouseover="this.style.background='#A4343E'" onmouseout="this.style.background='#EF3346'">
-              Enviar
-            </button>
+            <!-- Acciones -->
+            <div class="hero-form-actions">
+              <button type="submit" class="hero-form-submit">
+                Enviar
+              </button>
+              <a id="hero-whatsapp-link" class="hero-form-whatsapp" href="https://wa.link/a0g44x" target="_blank" rel="noopener" aria-label="Habla con nosotros por WhatsApp">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path fill="#25D366" d="M16 3.2A12.8 12.8 0 0 0 5.04 22.6L3.2 29.2l6.82-1.8A12.8 12.8 0 1 0 16 3.2Z"/>
+                  <path fill="#fff" d="M23.14 19.4c-.38-.2-2.23-1.1-2.58-1.22-.35-.13-.6-.2-.86.2-.25.38-.98 1.22-1.2 1.47-.22.25-.44.28-.82.1-.38-.2-1.6-.6-3.06-1.9-1.13-1-1.9-2.25-2.12-2.63-.22-.38-.02-.58.17-.77.17-.17.38-.44.57-.66.19-.22.25-.38.38-.64.13-.25.06-.48-.03-.67-.1-.2-.86-2.06-1.18-2.82-.31-.75-.63-.65-.86-.66h-.73c-.25 0-.67.1-1.02.48-.35.38-1.34 1.3-1.34 3.18s1.37 3.7 1.56 3.95c.2.25 2.7 4.12 6.53 5.78.91.4 1.62.63 2.18.8.92.29 1.75.25 2.4.15.74-.11 2.23-.91 2.55-1.8.32-.88.32-1.64.22-1.8-.1-.16-.35-.25-.73-.45Z"/>
+                </svg>
+                Habla con nosotros
+              </a>
+            </div>
 
           </form>
         </div>
@@ -2696,8 +3038,15 @@ window.nosLeftSlide = function (index) {
   if (!content || !section) return;
   var tick = false;
   var fadeLimit = 1;
+  function isStackedHero() {
+    return window.matchMedia('(max-width: 1023px)').matches;
+  }
   function measure() {
     fadeLimit = Math.max(section.offsetHeight * 0.45, 1);
+    if (isStackedHero()) {
+      content.style.opacity = '';
+      content.style.transform = '';
+    }
   }
   measure();
   window.addEventListener('resize', measure, { passive: true });
@@ -2706,6 +3055,12 @@ window.nosLeftSlide = function (index) {
     if (tick) return;
     tick = true;
     window.requestAnimationFrame(function () {
+      if (isStackedHero()) {
+        content.style.opacity = '';
+        content.style.transform = '';
+        tick = false;
+        return;
+      }
       var prog = Math.min(window.scrollY / fadeLimit, 1);
       content.style.opacity = String(1 - prog);
       content.style.transform = 'translateY(' + (-prog * 72) + 'px)';
@@ -2873,10 +3228,29 @@ window.nosLeftSlide = function (index) {
 <!-- Hero form: selector Empresa / Inversionista -->
 <script>
 (function () {
+  var whatsappLinks = {
+    empresa: 'https://wa.link/648x2i',
+    inversionista: 'https://wa.link/03vjoq'
+  };
+
+  function setHeroCompanyNeed(need) {
+    var selectedNeed = need || '';
+    var value = document.getElementById('hero-company-need-value');
+    if (value) value.value = selectedNeed;
+
+    document.querySelectorAll('[data-hero-company-need]').forEach(function (button) {
+      var isActive = selectedNeed && button.getAttribute('data-hero-company-need') === selectedNeed;
+      button.classList.toggle('is-active', Boolean(isActive));
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
   function setHeroFormType(type) {
     var isEmpresa = type === 'empresa';
     var value = document.getElementById('hero-form-type-value');
+    var whatsappLink = document.getElementById('hero-whatsapp-link');
     if (value) value.value = type;
+    if (whatsappLink) whatsappLink.href = whatsappLinks[type] || whatsappLinks.empresa;
 
     document.querySelectorAll('[data-hero-form-type]').forEach(function (button) {
       var isActive = button.getAttribute('data-hero-form-type') === type;
@@ -2893,6 +3267,7 @@ window.nosLeftSlide = function (index) {
   }
 
   window.setHeroFormType = setHeroFormType;
+  window.setHeroCompanyNeed = setHeroCompanyNeed;
 
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-hero-form-type]').forEach(function (button) {
@@ -2901,7 +3276,14 @@ window.nosLeftSlide = function (index) {
       });
     });
 
+    document.querySelectorAll('[data-hero-company-need]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        setHeroCompanyNeed(button.getAttribute('data-hero-company-need'));
+      });
+    });
+
     setHeroFormType('empresa');
+    setHeroCompanyNeed('Factoring');
   });
 })();
 </script>
@@ -2974,6 +3356,9 @@ window.nosLeftSlide = function (index) {
             form.reset();
             if (submittedHeroType && window.setHeroFormType) {
               window.setHeroFormType(submittedHeroType);
+            }
+            if (form.id === 'hero-form' && window.setHeroCompanyNeed) {
+              window.setHeroCompanyNeed('Factoring');
             }
             var counter = document.getElementById('char-count');
             if (counter) counter.textContent = '0';
