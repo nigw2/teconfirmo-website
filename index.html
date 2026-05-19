@@ -2598,10 +2598,10 @@
     <form name="contacto" method="POST" action="/" data-netlify="true" class="space-y-5">
 
       <input type="hidden" name="form-name" value="contacto" />
-
+    
       <div>
-        <label for="contact-name" class="sr-only">Nombre</label>
-        <input type="text" id="contact-name" name="nombre" placeholder="Nombre" required autocomplete="name" maxlength="60"
+        <label for="contact-name" class="sr-only">Nombre y apellido</label>
+        <input type="text" id="contact-name" name="nombre" placeholder="Nombre y apellido" required autocomplete="name" maxlength="60"
           pattern="[a-zA-ZáéíóúñÁÉÍÓÚÑ\s\-']+" title="Solo se permiten letras, espacios, guiones y apóstrofos"
           class="block w-full rounded-lg border border-tc-gray-2 bg-white px-4 py-3.5 font-body text-[15px] text-tc-navy placeholder:text-tc-navy/40 transition-colors duration-200 focus:border-tc-navy focus:outline-none focus:ring-2 focus:ring-tc-navy/15" />
       </div>
@@ -2610,7 +2610,14 @@
         <label for="contact-email" class="sr-only">Correo electrónico</label>
         <input type="email" id="contact-email" name="email" placeholder="Correo electrónico" required autocomplete="email" maxlength="100"
           class="block w-full rounded-lg border border-tc-gray-2 bg-white px-4 py-3.5 font-body text-[15px] text-tc-navy placeholder:text-tc-navy/40 transition-colors duration-200 focus:border-tc-navy focus:outline-none focus:ring-2 focus:ring-tc-navy/15" />
+      </div>
 
+      <div>
+        <label for="contact-celular" class="sr-only">Celular</label>
+        <input type="tel" id="contact-celular" name="celular" placeholder="Celular" required autocomplete="tel" maxlength="15" inputmode="numeric"
+          pattern="[0-9]+" title="Solo se permiten números"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+          class="block w-full rounded-lg border border-tc-gray-2 bg-white px-4 py-3.5 font-body text-[15px] text-tc-navy placeholder:text-tc-navy/40 transition-colors duration-200 focus:border-tc-navy focus:outline-none focus:ring-2 focus:ring-tc-navy/15" />
       </div>
 
       <div>
